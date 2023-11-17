@@ -1,0 +1,30 @@
+Filesystem                      Size  Used Avail Use% Mounted on
+devtmpfs                        943M     0  943M   0% /dev
+tmpfs                           963M     0  963M   0% /dev/shm
+tmpfs                           963M  8.8M  955M   1% /run
+tmpfs                           963M     0  963M   0% /sys/fs/cgroup
+/dev/mapper/rhel-root            10G  2.1G  7.9G  21% /
+/dev/sda2                      1014M  199M  816M  20% /boot
+/dev/sda1                       599M  5.8M  594M   1% /boot/efi
+/dev/mapper/rhel-home           2.0G   47M  2.0G   3% /home
+/dev/mapper/rhel-tmp            5.0G   69M  5.0G   2% /tmp
+/dev/mapper/rhel-var            5.0G  431M  4.6G   9% /var
+/dev/mapper/rhel-var_log        5.0G   77M  5.0G   2% /var/log
+/dev/mapper/rhel-var_tmp        5.0G   68M  5.0G   2% /var/tmp
+/dev/mapper/rhel-var_log_audit  5.0G   86M  5.0G   2% /var/log/audit
+tmpfs                           193M     0  193M   0% /run/user/1000
+Filesystem                     1K-blocks    Used Available Use% Mounted on
+devtmpfs                          964736       0    964736   0% /dev
+tmpfs                             985992       0    985992   0% /dev/shm
+tmpfs                             985992    8960    977032   1% /run
+tmpfs                             985992       0    985992   0% /sys/fs/cgroup
+/dev/mapper/rhel-root           10475520 2196512   8279008  21% /
+/dev/sda2                        1038336  203208    835128  20% /boot
+/dev/sda1                         613184    5896    607288   1% /boot/efi
+/dev/mapper/rhel-home            2086912   47632   2039280   3% /home
+/dev/mapper/rhel-tmp             5232640   69652   5162988   2% /tmp
+/dev/mapper/rhel-var             5232640  441140   4791500   9% /var
+/dev/mapper/rhel-var_log         5232640   78324   5154316   2% /var/log
+/dev/mapper/rhel-var_tmp         5232640   69576   5163064   2% /var/tmp
+/dev/mapper/rhel-var_log_audit   5232640   89776   5142864   2% /var/log/audit
+tmpfs                             197196       0    197196   0% /run/user/1000
