@@ -1,6 +1,7 @@
 #!/usr/bin/bash -xv
 kscfg="$1"
 isodir="$2"
+outdir="$3"
 
 function PREPISO {
 	if [ -z "$kscfg" ]; then
@@ -17,11 +18,18 @@ function PREPISO {
 		printf "\n\n\nThe directory %s does not exist.\n\n\n" "$isodir"
 		exit 1
 	fi
+	if [ -z "$outdir" ]; then
+		printf "\n\n\nYou need to state the directory to output the ISO to.\n\n\n"
+		exit 1
+	elif [ ! -d "$outdir" ]; then
+		printf "\n\n\nThe directroy %s does not exist\n\n\n" "$outdir"
+		exit 1
+	fi
 	if [ "$USER" != "root" ]; then
 		printf "\n\n\nYou need to have root permissions to run this script.\n\n\n"
 		exit 1
 	fi
-	volid="$(awk -F= '$1 == "VOLID"{print $NF}' $kscfg)"
+	volid="$(awk -F= '$1 == "VOLID"{print $NF}' $kscfg | dos2unix | tr -d [:blank:] )"
 }
 function GENISOCFG {
 cat << EOF
@@ -129,12 +137,12 @@ EOF
 function GENKICKSTARTISO {
 	PREPISO
 	cp -f $kscfg $isodir/
-	#GENISOCFG
+	GENISOCFG
 	for isocfg in $(find $isodir -type f -name isolinux.cfg); do
 		chmod +w $isocfg
 		GENISOCFG > $isocfg
 	done
-	#GENGRUBCFG
+	GENGRUBCFG
 	for grubcfg in $(find $isodir -type f -name grub.cfg); do
 		chmod +w $grubcfg
 		GENGRUBCFG > $grubcfg
@@ -143,7 +151,15 @@ function GENKICKSTARTISO {
 	if [ -f "../$volid.iso" ]; then
 		rm -f ../$volid.iso
 	fi
-	mkisofs -o ../$volid.iso -b isolinux/isolinux.bin -J -R -l -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -graft-points -V "$volid" .
+	outiso="$outdir/$volid-$(date +%F-%H%M%S).iso"
+	if [ -f "$outiso" ]; then
+		rm -f $outiso
+	fi
+	#mkisofs -o ../$volid.iso -b isolinux/isolinux.bin -J -R -l -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -graft-points -V "$volid" .
+	mkisofs -o $outiso -b isolinux/isolinux.bin -J -joliet-long -R -l -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -graft-points -V "$volid" .
+
+	printf "\n\n\nISO created at %s\n\n\n" "$outiso" 
+
 
 }
 GENKICKSTARTISO
