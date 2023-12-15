@@ -1,0 +1,1195 @@
+﻿"~~~~~   CUI   ~~~~~",
+"Vuln ID","Status","Comments","Finding Details",
+"V-230221","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230222","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230223","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230224","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230225","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-230226","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230227","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-230228","Not A Finding","# grep -E '(auth.*|authpriv.*|daemon.*)' /etc/rsyslog.conf
+# Don't log private authentication messages!
+*.info;mail.none;authpriv.none;cron.none                /var/log/messages
+# The authpriv file has restricted access.
+authpriv.*                                              /var/log/secure
+daemon.* /var/log/secure
+auth.* /var/log/secure","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: fail",
+"V-230229","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230230","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230231","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230232","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230233","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230234","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230235","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230236","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230237","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230238","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230239","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230240","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230241","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230243","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230244","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230245","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230246","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230247","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230248","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230249","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230250","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230251","Not A Finding","# grep -i macs /etc/crypto-policies/back-ends/opensshserver.config
+CRYPTO_POLICY='-oCiphers=aes256-ctr,aes192-ctr,aes128-ctr -oMACs=hmac-sha2-512,hmac-sha2-256,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com -oGSSAPIKeyExchange=no -oKexAlgorithms=ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512 -oHostKeyAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com -oPubkeyAcceptedKeyTypes=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com -oCASignatureAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-256,rsa-sha2-512'
+#","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230252","Not A Finding","# grep -i ciphers /etc/crypto-policies/back-ends/opensshserver.config
+CRYPTO_POLICY='-oCiphers=aes256-ctr,aes192-ctr,aes128-ctr,aes256-gcm@openssh.com,aes128-gcm@openssh.com -oMACs=hmac-sha2-512,hmac-sha2-256,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com -oGSSAPIKeyExchange=no -oKexAlgorithms=ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512 -oHostKeyAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com -oPubkeyAcceptedKeyTypes=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com -oCASignatureAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-256,rsa-sha2-512'
+#","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: fail",
+"V-230253","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230254","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230255","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230256","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230257","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230258","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230259","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230260","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230261","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230262","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-230263","Not A Finding","[root@rhel8baseline ~]# ls -l /etc/cron.daily/
+total 8
+-rwxr-xr-x. 1 root root 189 Jan  4  2018 logrotate
+-rwxr-xr-x. 1 root root 122 Dec  6 11:21 V230263","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230264","Open","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: fail",
+"V-230265","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230266","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230267","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230268","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230269","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230270","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230271","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230272","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230273","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230274","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230275","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230276","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230277","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230278","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230279","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230280","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230281","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230282","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230283","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230284","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230285","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230286","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230287","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230288","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230290","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230291","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230292","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230293","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230294","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230295","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230296","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230298","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230299","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230300","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230301","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230302","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230303","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230304","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230305","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230306","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230307","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230308","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230309","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230310","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230311","Open","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: fail",
+"V-230312","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230313","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230314","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230315","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230316","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230317","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230318","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230319","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230320","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230321","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230322","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230323","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230324","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230325","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230326","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230327","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230328","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230329","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230330","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230331","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230332","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230333","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230334","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230335","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230336","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230337","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230338","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230339","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230340","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230341","Open","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: fail",
+"V-230342","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230343","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230344","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230345","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230346","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230347","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230348","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230349","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230350","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230351","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230352","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230353","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230354","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230355","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230356","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230357","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230358","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230359","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230360","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230361","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230362","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230363","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230364","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230365","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230366","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230367","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230368","Open","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: fail",
+"V-230369","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230370","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230371","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230372","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230373","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230374","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230375","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230376","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230377","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230378","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230379","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230380","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230381","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230382","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230383","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230384","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230385","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230386","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230387","Not A Finding","# grep -s cron /etc/rsyslog.conf /etc/rsyslog.d/*.conf
+/etc/rsyslog.conf:*.info;mail.none;authpriv.none;cron.none                /var/log/messages
+/etc/rsyslog.conf:# Log cron stuff
+/etc/rsyslog.conf:cron.*                                                  /var/log/cron","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230388","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230389","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-230390","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230392","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230393","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230394","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230395","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230396","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230397","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230398","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230399","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230400","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230401","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230402","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230403","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230404","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230405","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230406","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230407","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230408","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230409","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230410","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230411","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230412","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230413","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230418","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230419","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230421","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230422","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230423","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230424","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230425","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230426","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230427","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230428","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230429","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230430","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230431","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230432","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230433","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230434","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230435","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230436","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230437","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230438","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230439","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230444","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230446","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230447","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230448","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230449","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230455","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230456","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230462","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230463","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230464","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230465","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230466","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230467","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230468","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230469","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230470","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-230471","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230472","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230473","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230474","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230475","Not A Finding","[root@rhel8baseline temp.admin]# grep -E '(\/usr\/sbin\/(audit|au|rsys))' /etc/aide.conf
+/usr/sbin/auditctl p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/auditd p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/ausearch p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/aureport p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/augenrules p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/rsyslogd p+i+n+u+g+s+b+acl+xattrs+sha512
+[root@rhel8baseline temp.admin]#","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230476","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230477","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230478","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230479","Not Applicable","# grep @@ /etc/rsyslog.conf /etc/rsyslog.d/*.conf
+/etc/rsyslog.conf:# Per CCE-80863-4: Set *.* @@logcollector in /etc/rsyslog.conf
+/etc/rsyslog.conf:*.* @@logcollector
+# dnf list installed | grep -i splunk
+splunkforwarder.x86_64                        9.1.2-b6b9c8185839                          @@commandline
+#","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230480","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230481","Not Applicable","# grep -i '$DefaultNetstreamDriver' /etc/rsyslog.conf /etc/rsyslog.d/*.conf
+/etc/rsyslog.d/encrypt.conf:$DefaultNetstreamDriver gtls
+# grep -i '$ActionSendStreamDriverMode' /etc/rsyslog.conf /etc/rsyslog.d/*.conf
+/etc/rsyslog.d/encrypt.conf:$ActionSendStreamDriverMode 1
+# dnf list installed | grep -i splunk
+splunkforwarder.x86_64                        9.1.2-b6b9c8185839                          @@commandline
+#","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230482","Not Applicable","# grep -i '$ActionSendStreamDriverAuthMode' /etc/rsyslog.conf /etc/rsyslog.d/*.conf
+/etc/rsyslog.d/stream_driver_auth.conf:$ActionSendStreamDriverAuthMode x509/name
+# dnf list installed | grep -i splunk
+splunkforwarder.x86_64                        9.1.2-b6b9c8185839                          @@commandline
+#","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230483","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230484","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230485","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230486","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230487","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230488","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230489","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230491","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230492","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230493","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230494","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230495","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230496","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230497","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230498","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230499","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230500","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230502","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230503","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230504","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230505","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-230506","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230507","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230508","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230509","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230510","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230511","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230512","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230513","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230514","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230515","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230516","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230517","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230518","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230519","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230520","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230521","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230522","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230523","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230524","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230525","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-230526","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230527","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230529","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230530","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230531","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230532","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230533","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230534","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230535","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230536","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230537","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230538","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230539","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230540","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230541","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230542","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230543","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230544","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230545","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230546","Open","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: fail",
+"V-230547","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230548","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230549","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230550","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230551","Not A Finding","[root@rhel8baseline ~]# find / -name aide.conf
+/etc/aide.conf","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230552","Not A Finding","[root@rhel8baseline ~]# grep -E ""[+]?acl"" /etc/aide.conf
+#acl:           Access Control Lists
+#R:             p+i+n+u+g+s+m+c+acl+selinux+xattrs+md5
+#L:             p+i+n+u+g+acl+selinux+xattrs
+#>:             Growing logfile p+u+g+i+n+S+acl+selinux+xattrs
+ALLXTRAHASHES = sha1+rmd160+sha256+sha512+tiger+xattrs+acl
+EVERYTHING = R+ALLXTRAHASHES+acl+xattrs
+NORMAL = p+i+n+u+g+s+m+c+acl+selinux+xattrs+sha512
+DIR = p+i+n+u+g+acl+selinux+xattrs
+PERMS = p+u+g+acl+selinux+xattrs
+LOG = p+u+g+n+S+acl+selinux+xattrs
+CONTENT = sha512+ftype+acl+xattrs
+CONTENT_EX = sha512+ftype+p+u+g+n+acl+selinux+xattrs
+DATAONLY = p+n+u+g+s+acl+selinux+xattrs+sha512
+/usr/sbin/auditctl p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/auditd p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/ausearch p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/aureport p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/augenrules p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/rsyslogd p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/bin/aulast p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/bin/aulastlog p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/bin/ausyscall p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/bin/auvirt p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/bin/rsyslog-recover-qi.pl p+i+n+u+g+s+b+acl+xattrs+sha512","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230553","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230554","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-230555","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230556","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230557","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230558","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230559","Open","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: fail",
+"V-230560","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-230561","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-237640","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-237641","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-237642","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-237643","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-244519","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244521","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244522","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244523","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-244524","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-244525","Open","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: fail",
+"V-244526","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-244527","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-244528","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244529","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244530","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244531","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244532","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244533","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244534","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244535","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244536","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244537","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244538","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244539","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244540","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-244541","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-244542","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-244543","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244544","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-244545","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244546","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244547","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244548","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244549","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-244550","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244551","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244552","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244553","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-244554","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-245540","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-250315","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-250316","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-250317","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-251706","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: pass",
+"V-251707","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-251708","Not A Finding","Scanned result is NF","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: pass",
+"V-251709","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-251710","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-251711","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-251712","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-251713","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-251714","Not Applicable","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:48:45
+Result: notapplicable",
+"V-251715","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-251716","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-251717","Open","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: fail",
+"V-251718","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-254520","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-255924","Not A Finding","# grep -i kexalgorithms /etc/crypto-policies/back-ends/opensshserver.config
+CRYPTO_POLICY='-oCiphers=aes256-ctr,aes192-ctr,aes128-ctr,aes256-gcm@openssh.com,aes128-gcm@openssh.com -oMACs=hmac-sha2-512,hmac-sha2-256,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com -oGSSAPIKeyExchange=no -oKexAlgorithms=ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512 -oHostKeyAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com -oPubkeyAcceptedKeyTypes=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com -oCASignatureAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-256,rsa-sha2-512'
+#","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: fail",
+"V-256973","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-256974","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"V-257258","Not Reviewed","","Tool: cpe:/a:niwc:scc:5.8
+Time: 2023-12-06T09:44:22
+Result: notchecked",
+"~~~~~   CUI   ~~~~~",
