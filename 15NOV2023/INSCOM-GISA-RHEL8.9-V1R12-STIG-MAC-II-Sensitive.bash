@@ -91,6 +91,12 @@ function V244525 {
 	SSHDCFG ClientAliveInterval 600
 }
 
+function V230553 {
+	for pkg in $(rpm -qa | grep -i xorg | grep -i server); do
+		dnf -y autoremove $pkg
+	done
+}
+
 function STIG {
 	#V230475
 	#V230551
@@ -98,6 +104,7 @@ function STIG {
 	#V230263
 	#V230252
 	#V255924
-	V244525
+	#V244525
+	V230553
 }
 STIG
