@@ -352,7 +352,7 @@ If the operating system is in non-compliance with the Information Assurance Vuln
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable Manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -639,11 +639,11 @@ Encrypting a partition in an already installed system is more difficult, because
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001199</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Mitigated through systems being VMs and data-at-rest encryption being on SAN/NAS that Virtualization Infrastructure is using.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -999,11 +999,11 @@ $ sudo dconf update</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000048</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1485,7 +1485,7 @@ Obtain a valid copy of the DoD root CA file from the PKI CA certificate bundle a
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable Manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1614,7 +1614,7 @@ $ sudo ssh-keygen -n [passphrase]</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable Manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -2956,7 +2956,7 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001084</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -3224,7 +3224,7 @@ $ sudo chmod 1777 [World-Writable Directory]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001090</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -4729,11 +4729,15 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001453</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i opensslcnf.config /etc/pki/tls/openssl.cnf
+.include /etc/crypto-policies/back-ends/opensslcnf.config
+# update-crypto-policies --show
+FIPS
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -5022,11 +5026,14 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001453</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -io +vers.*  /etc/crypto-policies/back-ends/gnutls.config
++VERS-ALL:-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0:+COMP-NULL:%PROFILE_MEDIUM
++VERS-ALL:-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -5544,11 +5551,12 @@ $ sudo chmod 755 [FILE]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec ls -l {} \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -5675,11 +5683,12 @@ $ sudo chown root [FILE]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find -L /lib /lib64 /usr/lib /usr/lib64 ! -user root -exec ls -l {} \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -6110,7 +6119,7 @@ If there is no process to validate certificates that is approved by the organiza
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001749</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Open</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:48:45
 Result: fail</FINDING_DETAILS>
@@ -7636,11 +7645,13 @@ $ sudo systemctl restart sssd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001948</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep certificate_verification /etc/sssd/sssd.conf /etc/sssd/conf.d/*.conf | grep -v "^#"
+/etc/sssd/conf.d/certificate_verification.conf:certificate_verification = ocsp_dgst = sha1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7777,7 +7788,7 @@ $ sudo yum install opensc</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001953</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -7913,11 +7924,16 @@ If "flags" does not contain the "nx" flag, this is a finding.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002824</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dmesg | grep NX
+[    0.000000] NX (Execute Disable) protection: active
+[    2.894365] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+# less /proc/cpuinfo | grep -i flags
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single pti ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves arat md_clear flush_l1d arch_capabilities
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8060,11 +8076,13 @@ GRUB_CMDLINE_LINUX="page_poison=1"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001084</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grub2-editenv list | grep page_poison
+kernelopts=root=/dev/mapper/inscomgisa-root ro resume=/dev/mapper/inscomgisa-swap rd.lvm.lv=inscomgisa/root rd.lvm.lv=inscomgisa/swap rd.shell=0 fips=1 boot=UUID=65f81700-9baa-4b4e-9025-06c3b103353a audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8207,11 +8225,13 @@ GRUB_CMDLINE_LINUX="vsyscall=none"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001084</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grub2-editenv list | grep vsyscall
+kernelopts=root=/dev/mapper/inscomgisa-root ro resume=/dev/mapper/inscomgisa-swap rd.lvm.lv=inscomgisa/root rd.lvm.lv=inscomgisa/swap rd.shell=0 fips=1 boot=UUID=65f81700-9baa-4b4e-9025-06c3b103353a audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8356,11 +8376,13 @@ GRUB_CMDLINE_LINUX="slub_debug=P"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001084</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grub2-editenv list | grep slub_debug
+kernelopts=root=/dev/mapper/inscomgisa-root ro resume=/dev/mapper/inscomgisa-swap rd.lvm.lv=inscomgisa/root rd.lvm.lv=inscomgisa/swap rd.shell=0 fips=1 boot=UUID=65f81700-9baa-4b4e-9025-06c3b103353a audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -9199,11 +9221,11 @@ If the service is not "enabled" and "active", this is a finding.</ATTRIBUTE_DATA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Baseline built on RHEL8.6</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -10806,11 +10828,39 @@ If a file system found in "/etc/fstab" refers to the user home directory file sy
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># awk -F: '($3&gt;=1000)&amp;&amp;($7 !~ /nologin/){print $1,$3,$6}' /etc/passwd
+temp.admin 1000 /home/temp.admin
+splunkfwd 1001 /opt/splunkforwarder
+# more /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Wed Dec  6 04:14:14 2023
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+/dev/mapper/inscomgisa-root /                       xfs     defaults        0 0
+UUID=65f81700-9baa-4b4e-9025-06c3b103353a /boot                   xfs     defaults,nosuid,nodev 0 0
+UUID=5102-8679          /boot/efi               vfat    defaults,uid=0,gid=0,umask=077,shortname=winnt,nodev 0 2
+/dev/mapper/inscomgisa-home /home                   xfs     defaults,noexec,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-opt /opt                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-opt_splunkforwarder /opt/splunkforwarder    xfs     defaults,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-tmp /tmp                    xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var /var                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-var_log /var/log                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_log_audit /var/log/audit          xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_tmp /var/tmp                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-swap none                    swap    defaults        0 0
+tmpfs /dev/shm tmpfs defaults,relatime,nodev,noexec,nosuid 0 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -11198,11 +11248,39 @@ If a file system found in "/etc/fstab" refers to the user home directory file sy
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># awk -F: '($3&gt;=1000)&amp;&amp;($7 !~ /nologin/){print $1,$3,$6}' /etc/passwd
+temp.admin 1000 /home/temp.admin
+splunkfwd 1001 /opt/splunkforwarder
+# more /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Wed Dec  6 04:14:14 2023
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+/dev/mapper/inscomgisa-root /                       xfs     defaults        0 0
+UUID=65f81700-9baa-4b4e-9025-06c3b103353a /boot                   xfs     defaults,nosuid,nodev 0 0
+UUID=5102-8679          /boot/efi               vfat    defaults,uid=0,gid=0,umask=077,shortname=winnt,nodev 0 2
+/dev/mapper/inscomgisa-home /home                   xfs     defaults,noexec,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-opt /opt                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-opt_splunkforwarder /opt/splunkforwarder    xfs     defaults,nosuid,nodev,noexec 0 0
+/dev/mapper/inscomgisa-tmp /tmp                    xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var /var                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-var_log /var/log                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_log_audit /var/log/audit          xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_tmp /var/tmp                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-swap none                    swap    defaults        0 0
+tmpfs /dev/shm tmpfs defaults,relatime,nodev,noexec,nosuid 0 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -11325,11 +11403,36 @@ If a file system found in "/etc/fstab" refers to removable media and it does not
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># more /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Wed Dec  6 04:14:14 2023
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+/dev/mapper/inscomgisa-root /                       xfs     defaults        0 0
+UUID=65f81700-9baa-4b4e-9025-06c3b103353a /boot                   xfs     defaults,nosuid,nodev 0 0
+UUID=5102-8679          /boot/efi               vfat    defaults,uid=0,gid=0,umask=077,shortname=winnt,nodev 0 2
+/dev/mapper/inscomgisa-home /home                   xfs     defaults,noexec,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-opt /opt                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-opt_splunkforwarder /opt/splunkforwarder    xfs     defaults,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-tmp /tmp                    xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var /var                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-var_log /var/log                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_log_audit /var/log/audit          xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_tmp /var/tmp                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-swap none                    swap    defaults        0 0
+tmpfs /dev/shm tmpfs defaults,relatime,nodev,noexec,nosuid 0 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -11452,11 +11555,36 @@ If a file system found in "/etc/fstab" refers to removable media and it does not
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># more /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Wed Dec  6 04:14:14 2023
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+/dev/mapper/inscomgisa-root /                       xfs     defaults        0 0
+UUID=65f81700-9baa-4b4e-9025-06c3b103353a /boot                   xfs     defaults,nosuid,nodev 0 0
+UUID=5102-8679          /boot/efi               vfat    defaults,uid=0,gid=0,umask=077,shortname=winnt,nodev 0 2
+/dev/mapper/inscomgisa-home /home                   xfs     defaults,noexec,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-opt /opt                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-opt_splunkforwarder /opt/splunkforwarder    xfs     defaults,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-tmp /tmp                    xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var /var                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-var_log /var/log                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_log_audit /var/log/audit          xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_tmp /var/tmp                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-swap none                    swap    defaults        0 0
+tmpfs /dev/shm tmpfs defaults,relatime,nodev,noexec,nosuid 0 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -11579,11 +11707,36 @@ If a file system found in "/etc/fstab" refers to removable media and it does not
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># more /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Wed Dec  6 04:14:14 2023
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+/dev/mapper/inscomgisa-root /                       xfs     defaults        0 0
+UUID=65f81700-9baa-4b4e-9025-06c3b103353a /boot                   xfs     defaults,nosuid,nodev 0 0
+UUID=5102-8679          /boot/efi               vfat    defaults,uid=0,gid=0,umask=077,shortname=winnt,nodev 0 2
+/dev/mapper/inscomgisa-home /home                   xfs     defaults,noexec,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-opt /opt                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-opt_splunkforwarder /opt/splunkforwarder    xfs     defaults,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-tmp /tmp                    xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var /var                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-var_log /var/log                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_log_audit /var/log/audit          xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_tmp /var/tmp                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-swap none                    swap    defaults        0 0
+tmpfs /dev/shm tmpfs defaults,relatime,nodev,noexec,nosuid 0 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12097,7 +12250,7 @@ $ sudo chmod 0755 &lt;file&gt;</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -13221,7 +13374,7 @@ If a local interactive user requires path variables to reference a directory own
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -14826,11 +14979,11 @@ AutomaticLoginEnable=false</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16150,11 +16303,11 @@ $ sudo systemctl restart sssd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000044</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Baseline is built on RHEL8.6</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -17464,11 +17617,11 @@ $ sudo dconf update</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000056</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18037,11 +18190,11 @@ $ sudo dconf update</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000056</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18184,11 +18337,11 @@ $ sudo dconf update</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000057</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18476,11 +18629,11 @@ Add the following setting to prevent non-privileged users from modifying it:
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000057</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -34857,11 +35010,11 @@ Reboot the system for the settings to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>VMs have no camera installed</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -36609,11 +36762,11 @@ $ sudo nmcli radio all off</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001444</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>VMs have no physical wireless network cards.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -39019,7 +39172,7 @@ $ sudo yum install fapolicyd.x86_64</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -39856,11 +40009,11 @@ $ sudo dconf update</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -43416,11 +43569,12 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># rpm -qa | grep xorg | grep server
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -44219,7 +44373,7 @@ $ sudo yum remove gssproxy</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Open</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:48:45
 Result: fail</FINDING_DETAILS>
@@ -45181,11 +45335,11 @@ $ sudo dconf update</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000048</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47254,11 +47408,11 @@ $ sudo dconf update</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000057</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47392,11 +47546,11 @@ $ sudo dconf update</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47527,7 +47681,7 @@ $ sudo yum install tmux</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000056</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -47684,11 +47838,11 @@ Add the following setting to prevent non-privileged users from modifying it:
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000057</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47841,11 +47995,11 @@ Add the following setting to prevent non-privileged users from modifying it:
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000057</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Default build of Baseline does not install Graphical User Interface/GNOME.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -48942,7 +49096,7 @@ $ sudo yum install usbguard.x86_64</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001958</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -50170,7 +50324,7 @@ If the daemon is not running, this is a finding.</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable Manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -50323,7 +50477,7 @@ $ sudo restorecon -R -v /var/log/faillock</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002238</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -50477,11 +50631,11 @@ $ sudo restorecon -R -v /var/log/faillock</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002238</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Baseline is built on RHEL 8.6</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -51333,7 +51487,7 @@ Done.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002696</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -52032,11 +52186,11 @@ Add the following line to the "/etc/pam.d/password-auth" file (or modify the lin
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Baseline is built on RHEL 8.6</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -52625,7 +52779,7 @@ This must be documented with the information system security officer (ISSO) as a
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002265</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -53063,7 +53217,7 @@ If "mailx" package is not installed, this is a finding.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001744</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
