@@ -1,5 +1,7 @@
 #!/bin/bash -xv
 aidecfg="/etc/aide.conf"
+sshhostkeys="$(sshd -T | awk '$1 == "hostkey" {print $NF}')"
+selinuxenforce="$(getenforce)"
 
 function AIDEVAL {
 	val="$1"
@@ -52,6 +54,51 @@ function SSHDCFG {
 	done
 }
 
+function SELINUXCFG {
+	setting="$1"
+	value="$2"
+	cfg="/etc/selinux/config"
+	currentvalue="$(awk -F= -v setting="$setting" '$1 == setting {print $2}' $cfg)"
+
+	if [ -z "$currentvalue" ]; then
+		printf "\n\n# Added %s\n%s=%s\n\n" "$(date)" "$setting" "$value" >> $cfg
+	elif [ "$currentvalue" != "$value" ]; then
+		sed -i "s#^$setting=.*#\n\n\# $setting set to \"$value\" on $(date)\n$setting=$value\n\n#g" $cfg
+	fi
+}
+
+function FAILLOCKCFG {
+	setting="$1"
+	value="$2"
+	cfg="/etc/security/faillock.conf"
+	currentvalue="$(egrep -v -e "^#" $cfg | tr -d [:blank:] | awk -F= -v setting="$setting" '$1 == setting {print $2}')"
+
+	if [ -z "$currentvalue" ]; then
+		printf "\n\n# Adding %s with %s - %s\n%s = %s\n\n" "$setting" "$value" "$(date)" "$setting" "$value"
+	elif [ "$currentvalue" != "$value" ]; then
+		str="$(egrep -e "^$setting.*$currentvalue" $cfg)"
+		sed "s#^$str.*#\n\n\# Changed $setting to \"$value\" on $(date)\n$setting = $value\n\n#g" $cfg
+	fi
+}
+
+function YUMCFG {
+	setting="$1"
+	value="$2"
+	for yumrepodir in $(dnf config-manager --dump | tr -d [:blank:] | awk -F= '$1 == "reposdir" {print $2}' | sed 's/,/\n/g'); do
+		if [ -d "$yumrepodir" ]; then
+			for cfg in $(find $yumrepodir -type f -iname "*.repo"); do
+				for repoid in $(grep -e "^\[" $cfg | sed -e 's/\[//g' -e 's/\]//g'); do
+					currentvalue="$(dnf config-manager $repoid --dump | tr -d [:blank:] |awk -F= -v setting="$setting" '$1 == setting {print $2}')"
+					if [ "$currentvalue" != "$value" ]; then
+						sed -i "s#^$setting=.*#$setting=$value#g" $cfg
+					fi
+				done
+			done
+		fi
+	done
+}
+
+
 function V230475 {
 	for pkg in audit rsyslog; do
 		for bin in $(rpm -ql $pkg | grep bin); do
@@ -97,7 +144,57 @@ function V230553 {
 	done
 }
 
+function V230240 {
+	SELINUXCFG SELINUX enforcing
+}
+
+function V250315 {
+	faildir="/var/log/faillock"
+	FAILLOCKCFG dir $faildir
+	semanage fcontext -a -t faillog_t "$faildir(/.*)?"
+	restorecon -R -v $faildir
+}
+
+function V254520 {
+	for user in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd); do
+		seuser="$(semanage login -l | awk -v user="$user" '$1 == user {print $2}')"
+		if [ "$(id $user | grep -e "(wheel)" | wc -l)" -ge "1" ]; then
+			isadmin="1"
+		else
+			isadmin="0"
+		fi
+		if [ -z "$seuser" ]; then
+			case $isadmin in
+				1)
+				semanage login -a -s staff_u $user
+				;;
+				*)
+				semanage login -a -s user_u $user
+				;;
+			esac
+		fi
+		unset isadmin
+	done
+}
+
+function V230264 {
+	YUMCFG gpgcheck 1
+}
+
+function V251710 {
+	dbdir="$(awk '$2 == "DBDIR" {print $3}' $aidecfg)"
+	dbfile="$(awk -F= '$1 == "database" {print $2}' $aidecfg | sed "s#file:@@{DBDIR}#$dbdir#")"
+	if [ ! -f "$dbfile" ]; then
+		aide --init
+	fi
+}
+
+function V250315 {
+	printf "%swheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL\n" "%" > /etc/sudoers.d/$FUNCNAME
+}
+
 function STIG {
+	V250315
 	#V230475
 	#V230551
 	#V230552
@@ -105,6 +202,11 @@ function STIG {
 	#V230252
 	#V255924
 	#V244525
-	V230553
+	#V230553
+	#V230240
+	#V250315
+	#V254520
+	#V230264
+	#V251710
 }
 STIG
