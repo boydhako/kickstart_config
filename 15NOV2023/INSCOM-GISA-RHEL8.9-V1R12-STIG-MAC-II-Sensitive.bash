@@ -3,6 +3,13 @@ aidecfg="/etc/aide.conf"
 sshhostkeys="$(sshd -T | awk '$1 == "hostkey" {print $NF}')"
 selinuxenforce="$(getenforce)"
 
+function GETHOMEMNT {
+	homemnt=""
+	for homedir in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $6}' /etc/passwd); do
+		homemnt="$homemnt $(df -h $homedir | awk '{print $NF}' | tail -n 1)"
+	done
+}
+
 function AIDEVAL {
 	val="$1"
 	for var in $(grep -v -e "^#" $aidecfg | grep -e "=" | tr -d [:blank:] | awk -F= '{print $1}'); do
@@ -193,8 +200,23 @@ function V250315 {
 	printf "%swheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL\n" "%" > /etc/sudoers.d/$FUNCNAME
 }
 
+function V230309 {
+	for fs in $(cat /proc/filesystems | awk '$1 != "nodev" {print $1}'); do
+		for mntpnt in $(mount | grep -e " $fs " | awk '{print $3}'); do
+			for file in $(find $mntpnt -xdev -type f -perm -0002 -print); do
+				for homemnt in $homemnt; do
+					if [ "$(grep -H $file $homemnt/*/.* | awk -F: '{print $1}' | wc -l)" -ge "1" ]; then
+						chmod 0755 $file
+					fi
+				done
+			done
+		done
+	done
+}
+
 function STIG {
-	V250315
+	GETHOMEMNT
+	#V250315
 	#V230475
 	#V230551
 	#V230552
@@ -208,5 +230,6 @@ function STIG {
 	#V254520
 	#V230264
 	#V251710
+	#V230309
 }
 STIG
