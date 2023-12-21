@@ -1331,7 +1331,9 @@ Result: fail</FINDING_DETAILS>
 # The authpriv file has restricted access.
 authpriv.*                                              /var/log/secure
 daemon.* /var/log/secure
-auth.* /var/log/secure</COMMENTS>
+auth.* /var/log/secure
+
+Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -2960,7 +2962,9 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable
+
+Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -4447,7 +4451,9 @@ Time: 2023-12-06T09:44:22
 Result: fail</FINDING_DETAILS>
 				<COMMENTS># grep -i ciphers /etc/crypto-policies/back-ends/opensshserver.config
 CRYPTO_POLICY='-oCiphers=aes256-ctr,aes192-ctr,aes128-ctr,aes256-gcm@openssh.com,aes128-gcm@openssh.com -oMACs=hmac-sha2-512,hmac-sha2-256,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com -oGSSAPIKeyExchange=no -oKexAlgorithms=ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512 -oHostKeyAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com -oPubkeyAcceptedKeyTypes=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com -oCASignatureAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-256,rsa-sha2-512'
-#</COMMENTS>
+#
+
+Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -5033,7 +5039,9 @@ Result: notchecked</FINDING_DETAILS>
 				<COMMENTS># grep -io +vers.*  /etc/crypto-policies/back-ends/gnutls.config
 +VERS-ALL:-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0:+COMP-NULL:%PROFILE_MEDIUM
 +VERS-ALL:-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0
-#</COMMENTS>
+#
+
+Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7792,7 +7800,7 @@ $ sudo yum install opensc</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12392,7 +12400,7 @@ If kernel core dumps are required, document the need with the ISSO.</ATTRIBUTE_D
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12553,7 +12561,7 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:48:45
 Result: fail</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12692,11 +12700,15 @@ $ sudo systemctl daemon-reload</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl status systemd-coredump.socket
+● systemd-coredump.socket
+   Loaded: masked (Reason: Unit systemd-coredump.socket is masked.)
+   Active: inactive (dead)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13245,11 +13257,16 @@ $ sudo echo -n &gt; /etc/resolv.conf</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -al /etc/resolv.conf
+-rw-r--r--. 1 root root 101 Dec 21 01:13 /etc/resolv.conf
+# grep nameserver /etc/resolv.conf
+nameserver 172.16.12.2
+nameserver 208.67.220.220
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13501,11 +13518,22 @@ If there is output, this is a finding.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find / -xdev -type d -perm -0002 -uid +999 -print
+# find /boot -xdev -type d -perm -0002 -uid +999 -print
+# find /boot/efi -xdev -type d -perm -0002 -uid +999 -print
+# find /var -xdev -type d -perm -0002 -uid +999 -print
+# find /opt -xdev -type d -perm -0002 -uid +999 -print
+# find /tmp -xdev -type d -perm -0002 -uid +999 -print
+# find /home -xdev -type d -perm -0002 -uid +999 -print
+# find /var/log -xdev -type d -perm -0002 -uid +999 -print
+# find /opt/splunkforwarder -xdev -type d -perm -0002 -uid +999 -print
+# find /var/tmp -xdev -type d -perm -0002 -uid +999 -print
+# find /var/log/audit -xdev -type d -perm -0002 -uid +999 -print
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13628,11 +13656,22 @@ If there is output, this is a finding.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find / -xdev -type d -perm -0002 -gid +999 -print
+# find /boot -xdev -type d -perm -0002 -gid +999 -print
+# find /boot/efi -xdev -type d -perm -0002 -gid +999 -print
+# find /var -xdev -type d -perm -0002 -gid +999 -print
+# find /opt -xdev -type d -perm -0002 -gid +999 -print
+# find /tmp -xdev -type d -perm -0002 -gid +999 -print
+# find /home -xdev -type d -perm -0002 -gid +999 -print
+# find /var/log -xdev -type d -perm -0002 -gid +999 -print
+# find /opt/splunkforwarder -xdev -type d -perm -0002 -gid +999 -print
+# find /var/tmp -xdev -type d -perm -0002 -gid +999 -print
+# find /var/log/audit -xdev -type d -perm -0002 -gid +999 -print
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13762,11 +13801,14 @@ If any interactive users do not have a home directory assigned, this is a findin
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># pwck -r
+user 'saslauth': directory '/run/saslauthd' does not exist
+pwck: no changes
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13895,11 +13937,14 @@ $ sudo chmod 0750 /home/smithj</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -ld $(awk -F: '($3&gt;=1000)&amp;&amp;($7 !~ /nologin/){print $6}' /etc/passwd)
+drwxr-x---.  7 temp.admin temp.admin 4096 Dec 21 02:51 /home/temp.admin
+drwxr-x---. 10 splunkfwd  splunkfwd   269 Dec 13 01:32 /opt/splunkforwarder
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14034,11 +14079,14 @@ Note: The example will be for the user "smithj", who has a home directory of "/h
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -ld $(awk -F: '($3&gt;=1000)&amp;&amp;($7 !~ /nologin/){print $6}' /etc/passwd)
+drwxr-x---.  7 temp.admin temp.admin 4096 Dec 21 02:51 /home/temp.admin
+drwxr-x---. 10 splunkfwd  splunkfwd   269 Dec 13 01:32 /opt/splunkforwarder
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14176,11 +14224,17 @@ $ sudo chmod 0750 /home/smithj</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -ld $(awk -F: '($3&gt;=1000)&amp;&amp;($7 !~ /nologin/){print $6}' /etc/passwd)
+drwxr-x---.  7 temp.admin temp.admin 4096 Dec 21 02:51 /home/temp.admin
+drwxr-x---. 10 splunkfwd  splunkfwd   269 Dec 13 01:32 /opt/splunkforwarder
+# pwck -r
+user 'saslauth': directory '/run/saslauthd' does not exist
+pwck: no changes
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14440,11 +14494,29 @@ Note: The example will be for the smithj user, who has a home directory of "/hom
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -al /home/temp.admin/.[^.]*
+-rw-------. 1 temp.admin temp.admin  877 Dec 21 02:50 /home/temp.admin/.bash_history
+-rw-r--r--. 1 temp.admin temp.admin   18 Jun 20  2022 /home/temp.admin/.bash_logout
+-rw-r-----. 1 temp.admin temp.admin  141 Jun 20  2022 /home/temp.admin/.bash_profile
+-rw-r-----. 1 temp.admin temp.admin  376 Jun 20  2022 /home/temp.admin/.bashrc
+-rw-------. 1 temp.admin temp.admin 1054 Dec 11 06:30 /home/temp.admin/.viminfo
+
+/home/temp.admin/.config:
+total 4
+drwx------. 3 temp.admin temp.admin   16 Dec 11 06:28 .
+drwxr-x---. 7 temp.admin temp.admin 4096 Dec 21 02:51 ..
+drwx------. 2 temp.admin temp.admin   41 Dec 11 06:30 gh
+
+/home/temp.admin/.ssh:
+total 8
+drwx------. 2 temp.admin temp.admin   29 Dec  6 04:28 .
+drwxr-x---. 7 temp.admin temp.admin 4096 Dec 21 02:51 ..
+-rw-------. 1 temp.admin temp.admin  381 Dec  6 04:28 authorized_keys
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14571,11 +14643,16 @@ $ sudo chown &lt;user&gt; &lt;file&gt;</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find / -fstype xfs -nouser
+find: ‘/proc/3729/task/3729/fd/6’: No such file or directory
+find: ‘/proc/3729/task/3729/fdinfo/6’: No such file or directory
+find: ‘/proc/3729/fd/5’: No such file or directory
+find: ‘/proc/3729/fdinfo/5’: No such file or directory
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14702,11 +14779,16 @@ $ sudo chgrp &lt;group&gt; &lt;file&gt;</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find / -fstype xfs -nogroup
+find: ‘/proc/3734/task/3734/fd/6’: No such file or directory
+find: ‘/proc/3734/task/3734/fdinfo/6’: No such file or directory
+find: ‘/proc/3734/fd/5’: No such file or directory
+find: ‘/proc/3734/fdinfo/5’: No such file or directory
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14843,11 +14925,40 @@ If a separate entry for the file system/partition containing the nonprivileged i
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># awk -F: '($3&gt;=1000)&amp;&amp;($7 !~ /nologin/){print $1,$3,$6}' /etc/passwd
+temp.admin 1000 /home/temp.admin
+splunkfwd 1001 /opt/splunkforwarder
+#
+# cat /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Wed Dec  6 04:14:14 2023
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+/dev/mapper/inscomgisa-root /                       xfs     defaults        0 0
+UUID=65f81700-9baa-4b4e-9025-06c3b103353a /boot                   xfs     defaults,nosuid,nodev 0 0
+UUID=5102-8679          /boot/efi               vfat    defaults,uid=0,gid=0,umask=077,shortname=winnt,nodev 0 2
+/dev/mapper/inscomgisa-home /home                   xfs     defaults,noexec,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-opt /opt                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-opt_splunkforwarder /opt/splunkforwarder    xfs     defaults,nosuid,nodev 0 0
+/dev/mapper/inscomgisa-tmp /tmp                    xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var /var                    xfs     defaults,nodev  0 0
+/dev/mapper/inscomgisa-var_log /var/log                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_log_audit /var/log/audit          xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-var_tmp /var/tmp                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/inscomgisa-swap none                    swap    defaults        0 0
+tmpfs /dev/shm tmpfs defaults,relatime,nodev,noexec,nosuid 0 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -15252,11 +15363,19 @@ $ sudo chage -E `date -d "+3 days" +%Y-%m-%d` system_account_name</ATTRIBUTE_DAT
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000016</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># chage -l temp.admin
+Last password change					: Dec 16, 2023
+Password expires					: Feb 14, 2024
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 1
+Maximum number of days between password change		: 60
+Number of days of warning before password expires	: 7
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16442,11 +16561,14 @@ dir = /var/log/faillock</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000044</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep 'dir =' /etc/security/faillock.conf
+# dir = /var/run/faillock
+dir = /var/log/faillock
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16738,11 +16860,14 @@ silent</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000044</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Open</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:48:45
 Result: fail</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep silent /etc/security/faillock.conf
+# silent
+silent
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18476,7 +18601,7 @@ set -g lock-after-time 900</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18787,7 +18912,7 @@ $ sudo systemctl restart sssd.service</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable Manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -20547,7 +20672,7 @@ Add the following line in "/etc/pam.d/password-auth" (or modify the line to have
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:48:45
 Result: fail</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable Manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -20957,11 +21082,12 @@ If output is produced, and the accounts listed are interactive user accounts, th
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># awk -F ":" 'list[$3]++{print $1, $3}' /etc/passwd
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -21115,7 +21241,7 @@ $ sudo systemctl restart sssd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000765</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
@@ -21386,11 +21512,13 @@ If any temporary accounts have no expiration date set or do not expire within 72
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001682</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># chage -l temp.admin | grep -i "account expires"
+Account expires                                         : Dec 24, 2023
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -21669,11 +21797,12 @@ offline_credentials_expiration = 1</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002007</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep cache_credentials /etc/sssd/sssd.conf
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -22082,11 +22211,40 @@ Document all authorized accounts on the system.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+systemd-coredump:x:999:997:systemd Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+tss:x:59:59:Account used for TPM access:/dev/null:/sbin/nologin
+polkitd:x:998:996:User for polkitd:/:/sbin/nologin
+pkcsslotd:x:997:993:Opencryptoki pkcsslotd user:/run/opencryptoki:/sbin/nologin
+unbound:x:996:992:Unbound DNS resolver:/etc/unbound:/sbin/nologin
+saslauth:x:995:76:Saslauthd user:/run/saslauthd:/sbin/nologin
+sssd:x:994:991:User for sssd:/:/sbin/nologin
+fapolicyd:x:993:990:Application Whitelisting Daemon:/var/lib/fapolicyd:/sbin/nologin
+chrony:x:992:989::/var/lib/chrony:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+temp.admin:x:1000:1000:Temporary Admin account for SSH access post-installation:/home/temp.admin:/bin/bash
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+splunkfwd:x:1001:1001:Splunk Forwarder:/opt/splunkforwarder:/bin/bash
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -22749,11 +22907,12 @@ If the account is for an application, the requirement for a umask less restricti
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -ir ^umask /home | grep -v '.bash_history'
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -22889,11 +23048,20 @@ UMASK 077</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i umask /etc/bashrc /etc/csh.cshrc /etc/profile
+/etc/bashrc:    # By default, we want umask to get set. This sets it for non-login shell.
+/etc/bashrc:       umask 077
+/etc/bashrc:       umask 077
+/etc/csh.cshrc:    umask 077
+/etc/csh.cshrc:    umask 077
+/etc/profile:# By default, we want umask 077
+/etc/profile:    umask 077
+/etc/profile:    umask 077
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -23183,7 +23351,9 @@ Result: notchecked</FINDING_DETAILS>
 				<COMMENTS># grep -s cron /etc/rsyslog.conf /etc/rsyslog.d/*.conf
 /etc/rsyslog.conf:*.info;mail.none;authpriv.none;cron.none                /var/log/messages
 /etc/rsyslog.conf:# Log cron stuff
-/etc/rsyslog.conf:cron.*                                                  /var/log/cron</COMMENTS>
+/etc/rsyslog.conf:cron.*                                                  /var/log/cron
+
+Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -31267,7 +31437,7 @@ The audit daemon must be restarted for the changes to take effect.</ATTRIBUTE_DA
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable Manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -31569,11 +31739,16 @@ GRUB_CMDLINE_LINUX="audit=1"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000169</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grub2-editenv list | grep audit
+kernelopts=root=/dev/mapper/inscomgisa-root ro resume=/dev/mapper/inscomgisa-swap rd.lvm.lv=inscomgisa/root rd.lvm.lv=inscomgisa/swap rd.shell=0 fips=1 boot=UUID=65f81700-9baa-4b4e-9025-06c3b103353a audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P
+#
+# grep audit /etc/default/grub
+GRUB_CMDLINE_LINUX="resume=/dev/mapper/inscomgisa-swap rd.lvm.lv=inscomgisa/root rd.lvm.lv=inscomgisa/swap rd.shell=0 fips=1 boot=UUID=65f81700-9baa-4b4e-9025-06c3b103353a audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -31716,11 +31891,16 @@ GRUB_CMDLINE_LINUX="audit_backlog_limit=8192"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001849</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grub2-editenv list | grep audit
+kernelopts=root=/dev/mapper/inscomgisa-root ro resume=/dev/mapper/inscomgisa-swap rd.lvm.lv=inscomgisa/root rd.lvm.lv=inscomgisa/swap rd.shell=0 fips=1 boot=UUID=65f81700-9baa-4b4e-9025-06c3b103353a audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P
+#
+# grep audit /etc/default/grub
+GRUB_CMDLINE_LINUX="resume=/dev/mapper/inscomgisa-swap rd.lvm.lv=inscomgisa/root rd.lvm.lv=inscomgisa/swap rd.shell=0 fips=1 boot=UUID=65f81700-9baa-4b4e-9025-06c3b103353a audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -32739,11 +32919,18 @@ If audit records are not stored on a partition made specifically for audit recor
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001849</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -iw log_file /etc/audit/auditd.conf
+log_file = /var/log/audit/audit.log
+# df -h /var/log/audit/
+Filesystem                            Size  Used Avail Use% Mounted on
+/dev/mapper/inscomgisa-var_log_audit  2.0G   83M  2.0G   5% /var/log/audit
+# du -sh /var/log/audit/
+36M	/var/log/audit/
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -33893,11 +34080,13 @@ server [ntp.server.name] iburst maxpoll 16</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001891</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep maxpoll /etc/chrony.conf
+server time.nist.gov iburst maxpoll 16
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -34717,11 +34906,15 @@ GRUB_CMDLINE_LINUX="pti=on"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grub2-editenv list | grep pti
+kernelopts=root=/dev/mapper/inscomgisa-root ro resume=/dev/mapper/inscomgisa-swap rd.lvm.lv=inscomgisa/root rd.lvm.lv=inscomgisa/swap rd.shell=0 fips=1 boot=UUID=65f81700-9baa-4b4e-9025-06c3b103353a audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P
+# grep pti /etc/default/grub
+GRUB_CMDLINE_LINUX="resume=/dev/mapper/inscomgisa-swap rd.lvm.lv=inscomgisa/root rd.lvm.lv=inscomgisa/swap rd.shell=0 fips=1 boot=UUID=65f81700-9baa-4b4e-9025-06c3b103353a audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -36041,11 +36234,29 @@ If there are additional ports, protocols, or services that are not in the PPSM C
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000382</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># firewall-cmd --get-active-zones
+public
+  interfaces: ens160
+# firewall-cmd --info-zone public
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources:
+  services: ssh
+  ports:
+  protocols:
+  forward: no
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -36185,7 +36396,7 @@ If "autofs" is required for Network File System (NFS), it must be documented wit
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -36484,11 +36695,18 @@ $ sudo firewall-cmd --reload</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># firewall-cmd --state
+running
+# firewall-cmd --get-active-zones
+public
+  interfaces: ens160
+# firewall-cmd --info-zone=public | grep target
+  target: DROP
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -39310,11 +39528,18 @@ Note: Enabling and starting usbguard without properly configuring it for an indi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001958</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># usbguard list-rules
+1: allow id 1d6b:0001 serial "0000:02:00.0" name "UHCI Host Controller" hash "3QuFY0nRVqo+mgnIkqiXmmirRvxPDeP7P3mintodpys=" parent-hash "42PXRxhXx8adD0H10oXgQnna1ED6vikevkSl6cwgdOI=" with-interface 09:00:00 with-connect-type ""
+2: allow id 1d6b:0002 serial "0000:02:02.0" name "EHCI Host Controller" hash "8G9+DxPfLbVnCuw59P+Fxfu6Yxy0AVsuFJ3qRPS0XNM=" parent-hash "Ps1yU1JiZl/dOj3LXAXp9uWQiNXeY3IT3NGW0E96O30=" with-interface 09:00:00 with-connect-type ""
+3: allow id 0e0f:0003 serial "" name "VMware Virtual USB Mouse" hash "F4BFfAiFQzjQxG8oQHVYMFiDF2/zhhARDrRSIj6oij8=" parent-hash "3QuFY0nRVqo+mgnIkqiXmmirRvxPDeP7P3mintodpys=" via-port "1-1" with-interface 03:01:02 with-connect-type "unknown"
+4: allow id 0e0f:0002 serial "" name "VMware Virtual USB Hub" hash "0cDIzeFX6eYg1fPydeh+aK2a/vRVjjj9bIasbHuN5sE=" parent-hash "3QuFY0nRVqo+mgnIkqiXmmirRvxPDeP7P3mintodpys=" via-port "1-2" with-interface 09:00:00 with-connect-type "unknown"
+5: allow id 0e0f:000b serial "" name "VMware Virtual USB Video Device" hash "PFAE6KtxXKPZU9vSNHWkACEYHxD6oNLsj63tt2ovQII=" parent-hash "8G9+DxPfLbVnCuw59P+Fxfu6Yxy0AVsuFJ3qRPS0XNM=" via-port "2-1" with-interface { 0e:01:00 0e:02:00 0e:02:00 0e:02:00 0e:02:00 0e:02:00 } with-connect-type "unknown"
+6: allow id 0e0f:0008 serial "000650268328" name "Virtual Bluetooth Adapter" hash "mx5CJc3v1b6cEpEwxLABwRw2mq2Ev8Ia8eatgaX9KgY=" parent-hash "0cDIzeFX6eYg1fPydeh+aK2a/vRVjjj9bIasbHuN5sE=" with-interface { e0:01:01 e0:01:01 e0:01:01 e0:01:01 e0:01:01 e0:01:01 e0:01:01 } with-connect-type "unknown"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -39873,7 +40098,7 @@ $ sudo systemctl daemon-reload</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -40279,11 +40504,15 @@ $ sudo systemctl daemon-reload</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl status debug-shell.service
+● debug-shell.service
+   Loaded: masked (Reason: Unit debug-shell.service is masked.)
+   Active: inactive (dead)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -42510,7 +42739,7 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:48:45
 Result: fail</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -43703,11 +43932,13 @@ $ sudo ip link set dev &lt;devicename&gt; multicast off promisc off</ATTRIBUTE_D
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ip link | grep -i promisc
+#
+</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -44377,7 +44608,7 @@ $ sudo yum remove gssproxy</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:48:45
 Result: fail</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -45480,7 +45711,7 @@ $ sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable Manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -45621,7 +45852,7 @@ $ sudo grub2-mkconfig -o /boot/grub2/grub.cfg</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable Manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -46034,7 +46265,7 @@ For the changes to take effect, the SSH daemon must be restarted.
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: fail</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -46440,7 +46671,7 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -46565,11 +46796,13 @@ If a separate entry for "/var/tmp" is not in use, this is a finding.</ATTRIBUTE_
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep /var/tmp /etc/fstab
+/dev/mapper/inscomgisa-var_tmp /var/tmp                xfs     defaults,nodev,noexec,nosuid 0 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -46694,11 +46927,13 @@ If the /boot/efi file system does not have the "nosuid" option set, this is a fi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep '\s/boot/efi\s'
+/dev/sda2 on /boot/efi type vfat (rw,nosuid,nodev,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=winnt,errors=remount-ro)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -46829,11 +47064,14 @@ $ sudo chmod 0750 /home/smithj/&lt;file or directory&gt;</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -lLR /home/temp.admin/
+/home/temp.admin/:
+total 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -46971,11 +47209,14 @@ $ sudo chgrp smithj /home/smithj/&lt;file or directory&gt;</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -lLR /home/temp.admin/
+/home/temp.admin/:
+total 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47115,11 +47356,15 @@ account required pam_faillock.so</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000044</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep pam_faillock.so /etc/pam.d/system-auth
+auth        required                                     pam_faillock.so preauth silent
+auth        required                                     pam_faillock.so authfail
+account     required                                     pam_faillock.so
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47260,11 +47505,15 @@ account required pam_faillock.so</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000044</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep pam_faillock.so /etc/pam.d/password-auth
+auth        required                                     pam_faillock.so preauth silent
+auth        required                                     pam_faillock.so authfail
+account     required                                     pam_faillock.so
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47685,7 +47934,7 @@ $ sudo yum install tmux</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -48525,7 +48774,7 @@ Note: Option names and values in the auditd.conf file are case insensitive.</ATT
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -48796,11 +49045,32 @@ $ sudo systemctl enable --now fapolicyd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl status fapolicyd.service
+● fapolicyd.service - File Access Policy Daemon
+   Loaded: loaded (/usr/lib/systemd/system/fapolicyd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Thu 2023-12-21 01:13:32 UTC; 46min ago
+     Docs: man:fapolicyd(8)
+ Main PID: 1213 (fapolicyd)
+    Tasks: 4 (limit: 12065)
+   Memory: 143.8M
+   CGroup: /system.slice/fapolicyd.service
+           └─1213 /usr/sbin/fapolicyd
+
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil fapolicyd[1213]: No SHA256 for /opt/splunkforwarder/bin/S3benchmark
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil fapolicyd[1213]: No SHA256 for /opt/splunkforwarder/bin/btool
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil fapolicyd[1213]: No SHA256 for /opt/splunkforwarder/bin/btprobe
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil fapolicyd[1213]: Checking if the trust database up to date
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil fapolicyd[1213]: Importing trust data from rpmdb backend
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil fapolicyd[1213]: Importing trust data from file backend
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil fapolicyd[1213]: Entries in trust DB: 30318
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil fapolicyd[1213]: Loaded trust info from all backends(without duplicates): 30318
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil fapolicyd[1213]: Trust database checks OK
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil fapolicyd[1213]: Starting to listen for events
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -48961,11 +49231,24 @@ permissive = 0</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep permissive /etc/fapolicyd/fapolicyd.conf
+permissive = 0
+# tail /etc/fapolicyd/compiled.rules
+deny_audit perm=any all : ftype=application/x-bad-elf
+allow perm=open all : ftype=application/x-sharedlib trust=1
+deny_audit perm=open all : ftype=application/x-sharedlib
+allow perm=execute all : trust=1
+allow perm=open all : ftype=%languages trust=1
+deny_audit perm=any all : ftype=%languages
+allow perm=any all : ftype=text/x-shellscript
+deny_audit perm=execute all : all
+allow perm=open all : all
+deny perm=any all : all
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -49238,11 +49521,24 @@ Note: Enabling and starting usbguard without properly configuring it for an indi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001958</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl status usbguard.service
+● usbguard.service - USBGuard daemon
+   Loaded: loaded (/usr/lib/systemd/system/usbguard.service; enabled; vendor preset: disabled)
+   Active: active (running) since Thu 2023-12-21 01:13:34 UTC; 50min ago
+     Docs: man:usbguard-daemon(8)
+ Main PID: 1245 (usbguard-daemon)
+    Tasks: 3 (limit: 12065)
+   Memory: 6.6M
+   CGroup: /system.slice/usbguard.service
+           └─1245 /usr/sbin/usbguard-daemon -f -s -K -c /etc/usbguard/usbguard-daemon.conf
+
+Dec 21 01:13:33 rhel8baseline.mi.ds.army.mil systemd[1]: Starting USBGuard daemon...
+Dec 21 01:13:34 rhel8baseline.mi.ds.army.mil systemd[1]: Started USBGuard daemon.
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -49540,7 +49836,7 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -49703,7 +49999,7 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -49866,7 +50162,7 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -50029,7 +50325,7 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -50793,11 +51089,20 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.all.forwarding
+net.ipv4.conf.all.forwarding = 0
+# grep -r net.ipv4.conf.all.forwarding /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf /etc/sysctl.conf /etc/sysctl.d/*.conf
+grep: /run/sysctl.d/*.conf: No such file or directory
+grep: /usr/local/lib/sysctl.d/*.conf: No such file or directory
+/etc/sysctl.conf:# Per CCE-86220-1: Set net.ipv4.conf.all.forwarding = 0 in /etc/sysctl.conf
+/etc/sysctl.conf:net.ipv4.conf.all.forwarding=0
+/etc/sysctl.d/99-sysctl.conf:# Per CCE-86220-1: Set net.ipv4.conf.all.forwarding = 0 in /etc/sysctl.conf
+/etc/sysctl.d/99-sysctl.conf:net.ipv4.conf.all.forwarding=0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -51314,11 +51619,12 @@ $ sudo chgrp root [DIRECTORY]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type d -exec stat -c "%n %G" '{}' \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -51631,11 +51937,14 @@ Add or modify the following line:
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep include /etc/sudoers
+#includedir /etc/sudoers.d
+# grep -r include /etc/sudoers.d/
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -51767,11 +52076,12 @@ Remove any occurrences of "pam_succeed_if" in the file.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002038</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep pam_succeed_if /etc/pam.d/sudo
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -51904,11 +52214,13 @@ Add the following line to the "/etc/pam.d/system-auth" file (or modify the line 
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># cat /etc/pam.d/system-auth | grep pam_pwquality
+password    requisite                                    pam_pwquality.so local_users_only
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -52336,11 +52648,15 @@ Remove any configurations that conflict with the above value.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -r retry /etc/security/pwquality.conf
+# retry = 3
+# Per CCE-80664-6: Set retry = 3 in /etc/security/pwquality.conf
+retry = 3
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -52479,7 +52795,7 @@ Add the following line in "/etc/pam.d/system-auth" (or modify the line to have t
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: fail</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable Manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -52607,11 +52923,13 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl get-default
+multi-user.target
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -53082,11 +53400,23 @@ Using the steps listed in the Check Text, confirm the newly imported keys show a
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001749</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># rpm -q --queryformat "%{SUMMARY}\n" gpg-pubkey | grep -i "red hat"
+gpg(Red Hat, Inc. (release key 2) &lt;security@redhat.com&gt;)
+gpg(Red Hat, Inc. (auxiliary key) &lt;security@redhat.com&gt;)
+# gpg -q --keyid-format short --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+gpg: out of core handler ignored in FIPS mode
+pub   rsa4096/FD431D51 2009-10-22 [SC]
+      Key fingerprint = 567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51
+uid                   Red Hat, Inc. (release key 2) &lt;security@redhat.com&gt;
+pub   rsa4096/D4082792 2018-06-27 [SC]
+      Key fingerprint = 6A6A A7C9 7C88 90AE C6AE  BFE2 F76F 66C3 D408 2792
+uid                   Red Hat, Inc. (auxiliary key) &lt;security@redhat.com&gt;
+sub   rsa4096/1B5584D3 2018-06-27 [E]
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -53221,7 +53551,7 @@ If "mailx" package is not installed, this is a finding.</ATTRIBUTE_DATA>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Ansible addressable</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -53350,11 +53680,13 @@ The "logind" service must be restarted for the changes to take effect. To restar
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001133</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS>Tool: cpe:/a:niwc:scc:5.8
 Time: 2023-12-06T09:44:22
 Result: notchecked</FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i ^StopIdleSessionSec /etc/systemd/logind.conf
+StopIdleSessionSec=900
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
