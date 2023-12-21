@@ -10,6 +10,41 @@ function GETHOMEMNT {
 	done
 }
 
+function SYSTEMDCFG {
+	cfgdir="/etc/systemd"
+	cfg="$cfgdir/$1"
+	setting="$2"
+	value="$3"
+
+	if [ ! -f "$cfg" ]; then
+		printf "# Created %s on %s\n\n# Added %s with \"%s\" - %s\n%s=%s\n" "$cfg" "$(date)" "$setting" "$value" "$(date)" "$setting" "$value" > $cfg
+	else
+		currentvalue="$(cat $cfg | tr -d  [:blank:] | awk -F= -v setting="$setting" '$1 == setting {print $2}')"
+		if [ -z "$currentvalue" ]; then
+			printf "\n# Adding \"%s=%s\" - %s\n%s=%s\n\n" "$setting" "$value" "$(date)" "$setting" "$value" >> $cfg
+		elif [ "$currentvalue" != "$value" ]; then
+			str="$(grep -e "^$setting" $cfg)"
+			sed -i "s#$str#\n\# Modifying $setting to \"$value\" - $(date)\n$setting=$value\n#g" $cfg
+		fi
+	fi
+}
+
+function SYSTEMCTL {
+	srv="$1"
+	status="$2"
+
+	case $status in
+		disable)
+			systemctl disable --now $srv
+			systemctl mask $srv
+		;;
+		enable)
+			systemctl enable --now $srv
+		;;
+	esac
+	systemctl daemon-reload
+}
+
 function AIDEVAL {
 	val="$1"
 	for var in $(grep -v -e "^#" $aidecfg | grep -e "=" | tr -d [:blank:] | awk -F= '{print $1}'); do
@@ -162,6 +197,12 @@ function V250315 {
 	restorecon -R -v $faildir
 }
 
+function V230341 {
+	if [ -z "$(grep -e "^silent" /etc/security/faillock.conf)" ]; then
+		printf "silent" >> /etc/security/faillock.conf
+	fi
+}
+
 function V254520 {
 	for user in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd); do
 		seuser="$(semanage login -l | awk -v user="$user" '$1 == user {print $2}')"
@@ -214,6 +255,82 @@ function V230309 {
 	done
 }
 
+function V230312 {
+	SYSTEMCTL systemd-coredump.socket disable
+}
+
+function V230532 {
+	SYSTEMCTL debug-shell.service disable
+}
+
+function V244545 {
+	SYSTEMCTL fapolicyd.service enable
+}
+
+function V244548 {
+	SYSTEMCTL usbguard.service enable
+}
+
+function V257258 {
+	SYSTEMDCFG logind.conf StopIdleSessionSec 900
+}
+
+function V230321 {
+	for homedir in $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd); do
+		chmod 0750 $homedir
+	done
+}
+
+function V230374 {
+	chage -E $(date -d +3days +%Y-%m-%d) temp.admin
+}
+
+function V230379 {
+	for user in games ftp; do
+		userdel --force --remove $user
+	done
+}
+
+function V230500 {
+	for zone in $(firewall-cmd --get-active-zones | egrep -v "^ "); do
+		for srv in $(firewall-cmd --info-zone $zone | sed 's/^  //g' | awk -F: '$1 == "services" {print $NF}'); do
+			case $srv in
+				ssh)
+				;;
+				*)
+					firewall-cmd --permanent --zone $zone --remove-service $srv
+					firewall-cmd --complete-reload
+				;;
+			esac
+		done
+	done
+}
+
+function V244546 {
+	fapdir="/etc/fapolicyd"
+	cfg="$fapdir/fapolicyd.conf"
+	permissive="$(cat $cfg | tr -d [:blank:] | awk -F= '$1 == "permissive" {print $2}')"
+	farules="$fapdir/compiled.rules"
+
+	if [ "$permissive" != "0" ]; then
+		str="$(egrep -e "^permissive" $cfg)"
+		sed -i "s#^$str#permissive = 0#g" $cfg
+	fi
+
+	if [ "$(tail -n 1 $farules)" != "deny perm=any all : all" ]; then
+		printf "deny perm=any all : all\n" > $fapdir/rules.d/99-$FUNCNAME.rules
+		fapolicyd-cli --update
+		systemctl restart fapolicyd.service
+	fi
+}
+
+function V230504 {
+	for zone in $(firewall-cmd --get-active-zones | grep -v -e " "); do
+		firewall-cmd --permanent --zone $zone --set-target=DROP
+		firewall-cmd --complete-reload
+	done
+}
+
 function STIG {
 	GETHOMEMNT
 	#V250315
@@ -231,5 +348,17 @@ function STIG {
 	#V230264
 	#V251710
 	#V230309
+	#V230312
+	#V230532
+	#V244545
+	#V244548
+	#V257258
+	#V230321
+	#V230374
+	#V230379
+	#V230500
+	#V244546
+	#V230341
+	V230504
 }
 STIG
