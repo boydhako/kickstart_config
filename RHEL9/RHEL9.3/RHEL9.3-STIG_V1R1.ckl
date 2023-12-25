@@ -184,9 +184,11 @@ If the installed version of RHEL 9 is not supported, this is a finding.</ATTRIBU
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># cat /etc/redhat-release
+Red Hat Enterprise Linux release 9.3 (Plow)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -322,9 +324,23 @@ $ sudo dnf update</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf history list | more
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+ID     | Command line                                                                   | Date and time    | Action(s)      | Altered
+-------------------------------------------------------------------------------------------------------------------------------------
+     6 | --config /root/repo.cfg install bind-utils                                     | 2023-12-25 10:04 | Install        |    6
+     5 | install ./scc-5.8.rhel9.x86_64.rpm                                             | 2023-12-25 08:22 | Install        |    1 E&lt;
+     4 | --config /root/repo.cfg install zip                                            | 2023-12-25 08:21 | Install        |    2 &gt;
+     3 | --config /root/repo.cfg install vim lsof dos2unix git                          | 2023-12-25 08:19 | Install        |    6
+     2 | --config /root/repo.cfg install gh                                             | 2023-12-25 07:57 | Install        |   68  &lt;
+     1 |                                                                                | 2023-12-25 07:31 | Install        |  424 &gt;E
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -638,7 +654,7 @@ If the daemon is not running, this is a finding.</ATTRIBUTE_DATA>
 				</STIG_DATA>
 				<STATUS>Not_Reviewed</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable manual </COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -763,9 +779,11 @@ $ sudo systemctl set-default multi-user.target</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl get-default
+multi-user.target
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1023,9 +1041,11 @@ $ sudo systemctl enable --now systemd-journald</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001665</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl is-active systemd-journald
+active
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1160,9 +1180,13 @@ $ sudo systemctl daemon-reload</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002235</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i ctrl /etc/systemd/system.conf
+#CtrlAltDelBurstAction=reboot-force
+# Per CCE-90308-8: Set CtrlAltDelBurstAction=none in /etc/systemd/system.conf
+CtrlAltDelBurstAction=none
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1296,9 +1320,13 @@ $ sudo systemctl mask --now ctrl-alt-del.target</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002235</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl status ctrl-alt-del.target
+○ ctrl-alt-del.target
+     Loaded: masked (Reason: Unit ctrl-alt-del.target is masked.)
+     Active: inactive (dead)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1432,9 +1460,13 @@ $ sudo systemctl mask --now debug-shell.target</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002235</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl status debug-shell.service
+○ debug-shell.service
+     Loaded: masked (Reason: Unit debug-shell.service is masked.)
+     Active: inactive (dead)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1576,7 +1608,7 @@ Confirm password:</ATTRIBUTE_DATA>
 				</STIG_DATA>
 				<STATUS>Not_Reviewed</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1701,9 +1733,10 @@ $ sudo grubby --update-kernel=ALL --remove-args="systemd.confirm_spawn"</ATTRIBU
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grubby --info=ALL | grep args | grep 'systemd.confirm_spawn'
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1840,7 +1873,7 @@ $ sudo grubby --update-kernel=ALL'</ATTRIBUTE_DATA>
 				</STIG_DATA>
 				<STATUS>Not_Reviewed</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1965,9 +1998,11 @@ $ sudo chgrp root /boot/grub2/grub.cfg</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /boot/grub2/grub.cfg
+root /boot/grub2/grub.cfg
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -2092,9 +2127,11 @@ $ sudo chown root /boot/grub2/grub.cfg</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /boot/grub2/grub.cfg
+root /boot/grub2/grub.cfg
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -2237,9 +2274,12 @@ GRUB_CMDLINE_LINUX="vsyscall=none"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001084</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grubby --info=ALL | grep args | grep -v 'vsyscall=none'
+# grep vsyscall /etc/default/grub
+GRUB_CMDLINE_LINUX="resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap fips=1 boot=UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -2382,9 +2422,12 @@ GRUB_CMDLINE_LINUX="page_poison=1"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001084</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grubby --info=ALL | grep args | grep -v 'page_poison=1'
+# grep page_poison /etc/default/grub
+GRUB_CMDLINE_LINUX="resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap fips=1 boot=UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -2531,9 +2574,12 @@ GRUB_CMDLINE_LINUX="slub_debug=P"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002824</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grubby --info=ALL | grep args | grep -v 'slub_debug=P'
+# grep slub_debug /etc/default/grub
+GRUB_CMDLINE_LINUX="resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap fips=1 boot=UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -2676,9 +2722,14 @@ GRUB_CMDLINE_LINUX="pti=on"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002824</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grubby --info=ALL | grep pti
+args="ro resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap fips=1 boot=UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+args="ro resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap fips=1 boot=UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+# grep pti /etc/default/grub
+GRUB_CMDLINE_LINUX="resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap fips=1 boot=UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -2841,9 +2892,14 @@ GRUB_CMDLINE_LINUX="audit=1"</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002884</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grubby --info=ALL | grep audit
+args="ro resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap fips=1 boot=UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+args="ro resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap fips=1 boot=UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+# grep audit /etc/default/grub
+GRUB_CMDLINE_LINUX="resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap fips=1 boot=UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d audit=1 audit_backlog_limit=8192 pti=on vsyscall=none page_poison=1 slub_debug=P"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -2996,9 +3052,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001090</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl kernel.dmesg_restrict
+kernel.dmesg_restrict = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F kernel.dmesg_restrict | tail -1
+kernel.dmesg_restrict = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -3150,9 +3210,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001090</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl kernel.perf_event_paranoid
+kernel.perf_event_paranoid = 2
+# /usr/lib/systemd/systemd-sysctl --cat-config  | egrep -v '^(#|;)' | grep -F kernel.perf_event_paranoid | tail -1
+kernel.perf_event_paranoid = 2
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -3299,9 +3363,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001749</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl kernel.kexec_load_disabled
+kernel.kexec_load_disabled = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F kernel.kexec_load_disabled | tail -1
+kernel.kexec_load_disabled = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -3446,9 +3514,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002824</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl kernel.kptr_restrict
+kernel.kptr_restrict = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' |  grep -F kernel.kptr_restrict | tail -1
+kernel.kptr_restrict = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -3595,9 +3667,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002235</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl fs.protected_hardlinks
+fs.protected_hardlinks = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' |  grep -F fs.protected_hardlinks | tail -1
+fs.protected_hardlinks = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -3744,9 +3820,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002235</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl fs.protected_symlinks
+fs.protected_symlinks = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F fs.protected_symlinks | tail -1
+fs.protected_symlinks = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -3885,9 +3965,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl kernel.core_pattern
+kernel.core_pattern = |/bin/false
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F kernel.core_pattern | tail -1
+kernel.core_pattern = |/bin/false
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -4677,9 +4761,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002824</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl kernel.randomize_va_space
+kernel.randomize_va_space = 2
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' |  grep -F kernel.randomize_va_space | tail -1
+kernel.randomize_va_space = 2
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -4821,9 +4909,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001082</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl kernel.unprivileged_bpf_disabled
+kernel.unprivileged_bpf_disabled = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F kernel.unprivileged_bpf_disabled | tail -1
+kernel.unprivileged_bpf_disabled = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -4965,9 +5057,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001082</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl kernel.yama.ptrace_scope
+kernel.yama.ptrace_scope = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F kernel.yama.ptrace_scope| tail -1
+kernel.yama.ptrace_scope = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -5096,9 +5192,12 @@ ProcessSizeMax=0</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i process /etc/systemd/coredump.conf
+#ProcessSizeMax=2G
+ProcessSizeMax=0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -5225,9 +5324,12 @@ Storage=none</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i storage /etc/systemd/coredump.conf
+#Storage=external
+Storage=none
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -5356,9 +5458,13 @@ Add the following line to the top of the /etc/security/limits.conf or in a singl
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -r -s core /etc/security/limits.conf /etc/security/limits.d/*.conf
+/etc/security/limits.conf:#        - core - limits the core file size (KB)
+/etc/security/limits.conf:#*               soft    core            0
+/etc/security/limits.conf:*     hard   core    0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -5491,9 +5597,13 @@ $ sudo systemctl daemon-reload</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl status systemd-coredump.socket
+○ systemd-coredump.socket
+     Loaded: masked (Reason: Unit systemd-coredump.socket is masked.)
+     Active: inactive (dead)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -5766,9 +5876,11 @@ $ sudo grubby --update-kernel=ALL --remove-args=noexec</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002824</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dmesg | grep '[NX|DX]*protection'
+[    0.000000] NX (Execute Disable) protection: active
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -5913,9 +6025,13 @@ $ sudo systemctl mask --now kdump</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl is-enabled  kdump
+masked
+# systemctl is-active kdump
+inactive
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -6074,9 +6190,20 @@ Using the steps listed in the Check Text, confirm the newly imported keys show a
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001749</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># rpm -q --queryformat "%{SUMMARY}\n" gpg-pubkey | grep -i "red hat"
+Red Hat, Inc. (release key 2) &lt;security@redhat.com&gt; public key
+Red Hat, Inc. (auxiliary key 3) &lt;security@redhat.com&gt; public key
+# gpg -q --keyid-format short --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+gpg: out of core handler ignored in FIPS mode
+pub   rsa4096/FD431D51 2009-10-22 [SC]
+      Key fingerprint = 567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51
+uid                   Red Hat, Inc. (release key 2) &lt;security@redhat.com&gt;
+pub   rsa4096/5A6340B3 2022-03-09 [SC]
+      Key fingerprint = 7E46 2425 8C40 6535 D56D  6F13 5054 E4A4 5A63 40B3
+uid                   Red Hat, Inc. (auxiliary key 3) &lt;security@redhat.com&gt;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -6209,9 +6336,13 @@ gpgcheck=1</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001749</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep gpgcheck /etc/dnf/dnf.conf
+gpgcheck=1
+# Per CCE-83463-0: Set localpkg_gpgcheck = 1 in /etc/dnf/dnf.conf
+localpkg_gpgcheck = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -6344,9 +6475,13 @@ localpkg_gpgcheck=1</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001749</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep gpgcheck /etc/dnf/dnf.conf
+gpgcheck=1
+# Per CCE-83463-0: Set localpkg_gpgcheck = 1 in /etc/dnf/dnf.conf
+localpkg_gpgcheck = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -6475,9 +6610,10 @@ $ sudo sed -i 's/gpgcheck\s*=.*/gpgcheck=1/g' /etc/yum.repos.d/*</ATTRIBUTE_DATA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001749</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep gpgcheck /etc/yum.repos.d/*.repo | more
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -6609,9 +6745,10 @@ $ rpm -Va --noconfig | awk '$1 ~ /..5/ &amp;&amp; $2 != "c"'
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># rpm -Va --noconfig | awk '$1 ~ /..5/ &amp;&amp; $2 != "c"'
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -6738,9 +6875,11 @@ Edit the file /etc/dnf/dnf.conf by adding or editing the following line:
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002617</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep clean /etc/dnf/dnf.conf
+clean_requirements_on_remove=True
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -6867,9 +7006,17 @@ $ sudo dnf install subscription-manager</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001749</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed subscription-manager
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+subscription-manager.x86_64                                         1.29.38-1.el9_3                                         @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7004,9 +7151,10 @@ $ sudo dnf remove vsftpd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed | grep ftp
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7137,9 +7285,16 @@ $ sudo dnf remove sendmail</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed sendmail
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7264,9 +7419,16 @@ $ sudo dnf remove nfs-utils</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed nfs-utils
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7393,9 +7555,16 @@ $ sudo dnf remove ypserv</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed ypserv
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7520,9 +7689,16 @@ $ sudo dnf remove rsh-server</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed rsh-server
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7651,9 +7827,16 @@ $ sudo dnf remove telnet-server</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed telnet-server
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7788,9 +7971,16 @@ $ sudo dnf remove gssproxy</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed gssproxy
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7925,9 +8115,15 @@ $ sudo dnf remove iprutils</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8062,9 +8258,16 @@ $ sudo dnf remove tuned</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed tuned
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8189,9 +8392,10 @@ $ sudo dnf remove tftp</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed | grep tftp
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8318,9 +8522,16 @@ $ sudo dnf remove quagga</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed quagga
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8452,9 +8663,16 @@ $ sudo systemctl set-default multi-user.target</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed "xorg*common"
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8725,9 +8943,17 @@ $ sudo dnf install gnutls-utils</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed gnutls-utils
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+gnutls-utils.x86_64                                              3.7.6-23.el9                                              @AppStream
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8854,9 +9080,17 @@ $ sudo dnf install nss-tools</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed nss-tools
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+nss-tools.x86_64                                              3.90.0-3.el9_2                                               @AppStream
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8983,9 +9217,17 @@ $ sudo dnf install rng-tools</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed rng-tools
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+rng-tools.x86_64                                                 6.16-1.el9                                                 @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -9239,9 +9481,11 @@ If a separate entry for "/home" is not in use, this is a finding.</ATTRIBUTE_DAT
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /home
+/dev/mapper/rhel-home on /home type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -9364,9 +9608,12 @@ If a separate entry for "/tmp" is not in use, this is a finding.</ATTRIBUTE_DATA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /tmp
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-tmp on /tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -9489,9 +9736,14 @@ If a separate entry for "/var" is not in use, this is a finding.</ATTRIBUTE_DATA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var
+/dev/mapper/rhel-var on /var type xfs (rw,nodev,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_log on /var/log type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_log_audit on /var/log/audit type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -9614,9 +9866,12 @@ If a separate entry for "/var/log" is not in use, this is a finding.</ATTRIBUTE_
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/log
+/dev/mapper/rhel-var_log on /var/log type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_log_audit on /var/log/audit type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -9747,9 +10002,11 @@ If no line is returned, this is a finding.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001849</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/log/audit
+/dev/mapper/rhel-var_log_audit on /var/log/audit type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -9872,9 +10129,11 @@ If a separate entry for "/var/tmp" is not in use, this is a finding.</ATTRIBUTE_
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/tmp
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -10011,9 +10270,11 @@ $ sudo systemctl mask --now autofs.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001958</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl is-enabled autofs
+Failed to get unit file state for autofs.service: No such file or directory
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -10140,9 +10401,11 @@ If the "/home" file system is mounted without the "nodev" option, this is a find
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /home
+/dev/mapper/rhel-home on /home type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -10273,9 +10536,11 @@ If the "/home" file system is mounted without the "nosuid" option, this is a fin
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /home
+/dev/mapper/rhel-home on /home type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -10400,9 +10665,11 @@ If the "/home" file system is mounted without the "noexec" option, this is a fin
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /home
+/dev/mapper/rhel-home on /home type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -11039,9 +11306,31 @@ If a file system found in "/etc/fstab" refers to removable media and it does not
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># more /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Mon Dec 25 07:31:08 2023
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+/dev/mapper/rhel-root   /                       xfs     defaults        0 0
+UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d /boot                   xfs     defaults,nodev,nosuid 0 0
+/dev/mapper/rhel-home   /home                   xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-tmp    /tmp                    xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-var    /var                    xfs     defaults,nodev  0 0
+/dev/mapper/rhel-var_log /var/log                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-var_log_audit /var/log/audit          xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-var_tmp /var/tmp                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-swap   none                    swap    defaults        0 0
+tmpfs /dev/shm tmpfs defaults,relatime,inode64,nodev,noexec,nosuid 0 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -11164,9 +11453,31 @@ If a file system found in "/etc/fstab" refers to removable media and it does not
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># more /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Mon Dec 25 07:31:08 2023
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+/dev/mapper/rhel-root   /                       xfs     defaults        0 0
+UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d /boot                   xfs     defaults,nodev,nosuid 0 0
+/dev/mapper/rhel-home   /home                   xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-tmp    /tmp                    xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-var    /var                    xfs     defaults,nodev  0 0
+/dev/mapper/rhel-var_log /var/log                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-var_log_audit /var/log/audit          xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-var_tmp /var/tmp                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-swap   none                    swap    defaults        0 0
+tmpfs /dev/shm tmpfs defaults,relatime,inode64,nodev,noexec,nosuid 0 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -11289,9 +11600,31 @@ If a file system found in "/etc/fstab" refers to removable media and it does not
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># more /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Mon Dec 25 07:31:08 2023
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+/dev/mapper/rhel-root   /                       xfs     defaults        0 0
+UUID=0d73c07f-3a20-44c6-881d-b61ef07db32d /boot                   xfs     defaults,nodev,nosuid 0 0
+/dev/mapper/rhel-home   /home                   xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-tmp    /tmp                    xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-var    /var                    xfs     defaults,nodev  0 0
+/dev/mapper/rhel-var_log /var/log                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-var_log_audit /var/log/audit          xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-var_tmp /var/tmp                xfs     defaults,nodev,noexec,nosuid 0 0
+/dev/mapper/rhel-swap   none                    swap    defaults        0 0
+tmpfs /dev/shm tmpfs defaults,relatime,inode64,nodev,noexec,nosuid 0 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -11809,9 +12142,11 @@ If the /dev/shm file system is mounted without the "nodev" option, this is a fin
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /dev/shm
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,inode64)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -11934,9 +12269,11 @@ If the /dev/shm file system is mounted without the "noexec" option, this is a fi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /dev/shm
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,inode64)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12059,9 +12396,11 @@ If the /dev/shm file system is mounted without the "noexec" option, this is a fi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /dev/shm
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,inode64)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12186,9 +12525,12 @@ If the "/tmp" file system is mounted without the "nodev" option, this is a findi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /tmp
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-tmp on /tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12311,9 +12653,12 @@ If the "/tmp" file system is mounted without the "noexec" option, this is a find
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /tmp
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-tmp on /tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12436,9 +12781,12 @@ If the "/tmp" file system is mounted without the "nosuid" option, this is a find
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /tmp
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-tmp on /tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12563,9 +12911,14 @@ If the "/var" file system is mounted without the "nodev" option, this is a findi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var
+/dev/mapper/rhel-var on /var type xfs (rw,nodev,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_log on /var/log type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_log_audit on /var/log/audit type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12690,9 +13043,12 @@ If the "/var/log" file system is mounted without the "nodev" option, this is a f
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/log
+/dev/mapper/rhel-var_log on /var/log type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_log_audit on /var/log/audit type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12815,9 +13171,12 @@ If the "/var/log" file system is mounted without the "noexec" option, this is a 
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/log
+/dev/mapper/rhel-var_log on /var/log type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_log_audit on /var/log/audit type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -12940,9 +13299,12 @@ If the "/var/log" file system is mounted without the "nosuid" option, this is a 
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/log
+/dev/mapper/rhel-var_log on /var/log type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_log_audit on /var/log/audit type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13067,9 +13429,11 @@ If the "/var/log/audit" file system is mounted without the "nodev" option, this 
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/log/audit
+/dev/mapper/rhel-var_log_audit on /var/log/audit type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13192,9 +13556,11 @@ If the "/var/log/audit" file system is mounted without the "noexec" option, this
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/log/audit
+/dev/mapper/rhel-var_log_audit on /var/log/audit type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13317,9 +13683,11 @@ If the "/var/log/audit" file system is mounted without the "nosuid" option, this
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/log/audit
+/dev/mapper/rhel-var_log_audit on /var/log/audit type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13444,9 +13812,11 @@ If the "/var/tmp" file system is mounted without the "nodev" option, this is a f
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/tmp
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13569,9 +13939,11 @@ If the "/var/tmp" file system is mounted without the "noexec" option, this is a 
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/tmp
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -13694,9 +14066,11 @@ If the "/var/tmp" file system is mounted without the "nosuid" option, this is a 
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep /var/tmp
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14096,9 +14470,10 @@ If any output is produced, this is a finding.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># mount | grep '^/dev\S* on /\S' | grep --invert-match 'nodev'
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14225,9 +14600,10 @@ $ sudo chmod 755 [FILE]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin -perm /022 -exec ls -l {} \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14354,9 +14730,10 @@ $ sudo chmod 755 [DIRECTORY]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type d -exec ls -l {} \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14481,9 +14858,10 @@ $ sudo chmod 755 [FILE]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec ls -l {} \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14610,9 +14988,11 @@ $ sudo chmod 0755 /var/log</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -ld /var/log
+drwxr-xr-x. 12 root root 4096 Dec 25 09:46 /var/log
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14739,9 +15119,11 @@ $ sudo chmod 0640 /var/log/messages</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -la /var/log/messages
+-rw-------. 1 root root 449070 Dec 25 11:31 /var/log/messages
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -14878,9 +15260,17 @@ Replace "[audit_tool]" with each audit tool that has a more permissive mode than
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001493</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules
+755 /sbin/auditctl
+755 /sbin/aureport
+755 /sbin/ausearch
+750 /sbin/autrace
+755 /sbin/auditd
+755 /sbin/rsyslogd
+755 /sbin/augenrules
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -15009,9 +15399,15 @@ chmod 0700 [cron configuration directory]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find /etc/cron* -type d | xargs stat -c "%a %n"
+700 /etc/cron.d
+700 /etc/cron.daily
+700 /etc/cron.hourly
+700 /etc/cron.monthly
+700 /etc/cron.weekly
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -15273,9 +15669,11 @@ $ sudo chmod 0750 /home/wadea</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -ld $(awk -F: '($3&gt;=1000)&amp;&amp;($7 !~ /nologin/){print $6}' /etc/passwd)
+drwx------. 4 temp.admin temp.admin 122 Dec 25 09:50 /home/temp.admin
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -15400,9 +15798,11 @@ $ sudo chmod 0644 /etc/group</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/group
+644 /etc/group
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -15527,9 +15927,11 @@ $ sudo chmod 0644 /etc/group-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/group-
+644 /etc/group-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -15654,9 +16056,11 @@ $ sudo chmod 0000 /etc/gshadow</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/gshadow
+0 /etc/gshadow
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -15781,9 +16185,12 @@ $ sudo chmod 0000 /etc/gshadow-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/gshadow-
+0 /etc/gshadow-
+#
+</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -15908,9 +16315,11 @@ $ sudo chmod 0644 /etc/passwd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/passwd
+644 /etc/passwd
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16035,9 +16444,11 @@ $ sudo chmod 0644 /etc/passwd-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/passwd-
+644 /etc/passwd-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16162,9 +16573,11 @@ $ sudo chmod 0000 /etc/shadow-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/shadow-
+0 /etc/shadow-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16289,9 +16702,11 @@ $ sudo chown root /etc/group</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /etc/group
+root /etc/group
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16416,9 +16831,11 @@ $ sudo chgrp root /etc/group</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /etc/group
+root /etc/group
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16543,9 +16960,11 @@ $ sudo chown root /etc/group-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /etc/group-
+root /etc/group-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16670,9 +17089,11 @@ $ sudo chgrp root /etc/group-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /etc/group-
+root /etc/group-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16797,9 +17218,11 @@ $ sudo chown root /etc/gshadow</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /etc/gshadow
+root /etc/gshadow
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -16924,9 +17347,11 @@ $ sudo chgrp root /etc/gshadow</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /etc/gshadow
+root /etc/gshadow
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -17051,9 +17476,11 @@ $ sudo chown root /etc/gshadow-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /etc/gshadow-
+root /etc/gshadow-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -17178,9 +17605,11 @@ $ sudo chgrp root /etc/gshadow-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /etc/gshadow-
+root /etc/gshadow-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -17305,9 +17734,11 @@ $ sudo chown root /etc/passwd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /etc/passwd
+root /etc/passwd
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -17432,9 +17863,11 @@ $ sudo chgrp root /etc/passwd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /etc/passwd
+root /etc/passwd
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -17559,9 +17992,11 @@ $ sudo chown root /etc/passwd-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /etc/passwd-
+root /etc/passwd-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -17686,9 +18121,11 @@ $ sudo chgrp root /etc/passwd-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /etc/passwd-
+root /etc/passwd-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -17813,9 +18250,11 @@ $ sudo chown root /etc/shadow</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /etc/shadow
+root /etc/shadow
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -17940,9 +18379,11 @@ $ sudo chgrp root /etc/shadow</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /etc/shadow
+root /etc/shadow
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18067,9 +18508,11 @@ $ sudo chown root /etc/shadow-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /etc/shadow-
+root /etc/shadow-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18194,9 +18637,11 @@ $ sudo chgrp root /etc/shadow-</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /etc/shadow-
+root /etc/shadow-
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18323,9 +18768,11 @@ $ sudo chown root /var/log</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -ld /var/log
+drwxr-xr-x. 12 root root 4096 Dec 25 09:46 /var/log
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18452,9 +18899,11 @@ $ sudo chgrp root /var/log</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -ld /var/log
+drwxr-xr-x. 12 root root 4096 Dec 25 09:46 /var/log
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18581,9 +19030,11 @@ $ sudo chown root /var/log/messages</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -la /var/log/messages
+-rw-------. 1 root root 451318 Dec 25 11:51 /var/log/messages
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18710,9 +19161,11 @@ $ sudo chgrp root /var/log/messages</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -la /var/log/messages
+-rw-------. 1 root root 451588 Dec 25 11:56 /var/log/messages
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18839,9 +19292,10 @@ $ sudo chown root [FILE]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -user root -exec ls -l {} \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -18968,9 +19422,12 @@ $ sudo chgrp root [FILE]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find -L /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin ! -group root -exec ls -l {} \;
+-rwxr-sr-x. 1 root tty 23800 Aug 24 20:42 /bin/write
+-rwxr-sr-x. 1 root tty 23800 Aug 24 20:42 /usr/bin/write
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -19097,9 +19554,10 @@ $ sudo chown root [FILE]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find -L /lib /lib64 /usr/lib /usr/lib64 ! -user root -exec ls -l {} \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -19226,9 +19684,16 @@ $ sudo chgrp root [FILE]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find -L /lib /lib64 /usr/lib /usr/lib64 ! -group root -exec ls -l {} \;
+lrwxrwxrwx. 1 root root 41 Aug 10  2021 /lib/.build-id/50/ee4e16ae62e0615cfdab55b9a5ba0ecc02bea9 -&gt; ../../../../usr/libexec/utempter/utempter
+lrwxrwxrwx. 1 root root 25 Aug 24 20:42 /lib/.build-id/cd/871df792203141dd0ac0e7a1ab2fede8494578 -&gt; ../../../../usr/bin/write
+lrwxrwxrwx. 1 root root 43 Jul 20 10:25 /lib/.build-id/64/d41862b15c8995f6a8ec64967bc818a7993b8d -&gt; ../../../../usr/libexec/openssh/ssh-keysign
+lrwxrwxrwx. 1 root root 41 Aug 10  2021 /usr/lib/.build-id/50/ee4e16ae62e0615cfdab55b9a5ba0ecc02bea9 -&gt; ../../../../usr/libexec/utempter/utempter
+lrwxrwxrwx. 1 root root 25 Aug 24 20:42 /usr/lib/.build-id/cd/871df792203141dd0ac0e7a1ab2fede8494578 -&gt; ../../../../usr/bin/write
+lrwxrwxrwx. 1 root root 43 Jul 20 10:25 /usr/lib/.build-id/64/d41862b15c8995f6a8ec64967bc818a7993b8d -&gt; ../../../../usr/libexec/openssh/ssh-keysign
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -19355,9 +19820,10 @@ $ sudo chown root [DIRECTORY]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type d -exec stat -c "%n %U" '{}' \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -19484,9 +19950,10 @@ $ sudo chgrp root [DIRECTORY]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001499</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type d -exec stat -c "%n %G" '{}' \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -19623,9 +20090,17 @@ Replace "[audit_tool]" with each audit tool not owned by "root".</ATTRIBUTE_DATA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001493</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules
+root /sbin/auditctl
+root /sbin/aureport
+root /sbin/ausearch
+root /sbin/autrace
+root /sbin/auditd
+root /sbin/rsyslogd
+root /sbin/augenrules
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -19762,9 +20237,17 @@ Replace "[audit_tool]" with each audit tool not group-owned by "root".</ATTRIBUT
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001493</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules
+root /sbin/auditctl
+root /sbin/aureport
+root /sbin/ausearch
+root /sbin/autrace
+root /sbin/auditd
+root /sbin/rsyslogd
+root /sbin/augenrules
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -19895,9 +20378,17 @@ $ sudo chown root [cron config file]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%U %n" /etc/cron*
+root /etc/cron.d
+root /etc/cron.daily
+root /etc/cron.deny
+root /etc/cron.hourly
+root /etc/cron.monthly
+root /etc/crontab
+root /etc/cron.weekly
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -20028,9 +20519,17 @@ $ sudo chgrp root [cron config file]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%G %n" /etc/cron*
+root /etc/cron.d
+root /etc/cron.daily
+root /etc/cron.deny
+root /etc/cron.hourly
+root /etc/cron.monthly
+root /etc/crontab
+root /etc/cron.weekly
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -20296,9 +20795,10 @@ $ chmod a+t [World-Writable Directory]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001090</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find / -type d \( -perm -0002 -a ! -perm -1000 \) -print 2&gt;/dev/null
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -20421,9 +20921,10 @@ $ sudo chgrp &lt;group&gt; &lt;file&gt;</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># df --local -P | awk {'if (NR!=1) print $6'} | sudo xargs -I '{}' find '{}' -xdev -nogroup
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -20546,9 +21047,10 @@ $ sudo chown &lt;user&gt; &lt;file&gt;</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># df --local -P | awk {'if (NR!=1) print $6'} | sudo xargs -I '{}' find '{}' -xdev -nouser
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -20685,9 +21187,11 @@ If a package was not used to install the SELinux policy for a given device class
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find /dev -context *:device_t:* \( -type c -o -type b \) -printf "%p %Z\n"
+# find /dev -context *:unlabeled_t:* \( -type c -o -type b \) -printf "%p %Z\n"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -20812,9 +21316,11 @@ $ sudo chmod 0600 /etc/crontab</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/crontab
+600 /etc/crontab
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -20939,9 +21445,11 @@ $ sudo chmod 0000 /etc/shadow</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/shadow
+0 /etc/shadow
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -21088,9 +21596,17 @@ $ sudo dnf install firewalld</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002322</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed firewalld
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+firewalld.noarch                                                1.2.1-1.el9                                                 @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -21231,9 +21747,11 @@ $ sudo systemctl enable --now firewalld</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl is-active firewalld
+active
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -21659,9 +22177,12 @@ Establish rate-limiting rules based on organization-defined types of DoS attacks
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002385</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i firewallbackend /etc/firewalld/firewalld.conf
+# FirewallBackend
+FirewallBackend=nftables
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -22069,9 +22590,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.core.bpf_jit_harden
+net.core.bpf_jit_harden = 2
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.core.bpf_jit_harden | tail -1
+net.core.bpf_jit_harden = 2
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -22198,9 +22723,17 @@ $ sudo dnf install chrony</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001891</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed chrony
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+chrony.x86_64                                                   4.3-1.el9                                                   @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -22327,9 +22860,11 @@ $ sudo systemctl enable --now chronyd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001891</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl is-active chronyd
+active
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -23712,9 +24247,17 @@ $ sudo dnf install libreswan</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000803</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed libreswan
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+libreswan.x86_64                                                4.12-1.el9                                                 @AppStream
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -24116,9 +24659,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002385</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.tcp_syncookies
+net.ipv4.tcp_syncookies = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.tcp_syncookies | tail -1
+net.ipv4.tcp_syncookies = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -24261,9 +24808,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.all.accept_redirects
+net.ipv4.conf.all.accept_redirects = 0
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.conf.all.accept_redirects | tail -1
+net.ipv4.conf.all.accept_redirects = 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -24406,9 +24957,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.all.accept_source_route
+net.ipv4.conf.all.accept_source_route = 0
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.conf.all.accept_source_route | tail -1
+net.ipv4.conf.all.accept_source_route = 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -24833,9 +25388,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.all.rp_filter
+net.ipv4.conf.all.rp_filter = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.conf.all.rp_filter | tail -1
+net.ipv4.conf.all.rp_filter = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -24978,9 +25537,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.default.accept_redirects
+net.ipv4.conf.default.accept_redirects = 0
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.conf.default.accept_redirects | tail -1
+net.ipv4.conf.default.accept_redirects = 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -25123,9 +25686,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.default.accept_source_route
+net.ipv4.conf.default.accept_source_route = 0
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.conf.default.accept_source_route | tail -1
+net.ipv4.conf.default.accept_source_route = 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -25264,9 +25831,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.default.rp_filter
+net.ipv4.conf.default.rp_filter = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.conf.default.rp_filter | tail -1
+net.ipv4.conf.default.rp_filter = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -25409,9 +25980,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.icmp_echo_ignore_broadcasts
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|$)' | grep -F net.ipv4.icmp_echo_ignore_broadcasts | tail -1
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -25695,9 +26270,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.all.send_redirects
+net.ipv4.conf.all.send_redirects = 0
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' |  grep -F net.ipv4.conf.all.send_redirects | tail -1
+net.ipv4.conf.all.send_redirects = 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -25840,9 +26419,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.default.send_redirects
+net.ipv4.conf.default.send_redirects = 0
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.conf.default.send_redirects | tail -1
+net.ipv4.conf.default.send_redirects = 0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -27274,9 +27857,17 @@ $ sudo dnf install openssh-server</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002422</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed openssh-server
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+openssh-server.x86_64                                             8.7p1-34.el9                                              @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -27419,9 +28010,11 @@ $ systemctl enable --now sshd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002422</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl is-active sshd
+active
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -27548,9 +28141,17 @@ $ sudo dnf install openssh-clients</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed openssh-clients
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+openssh-clients.x86_64                                             8.7p1-34.el9                                             @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -28520,9 +29121,12 @@ $ sudo dnf reinstall openssh-server</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001453</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep Include /etc/ssh/sshd_config  /etc/ssh/sshd_config.d/*
+/etc/ssh/sshd_config:Include /etc/ssh/sshd_config.d/*.conf
+/etc/ssh/sshd_config.d/50-redhat.conf:Include /etc/crypto-policies/back-ends/opensshserver.config
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -28654,9 +29258,12 @@ $ sudo dnf reinstall openssh-clients</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001453</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep Include /etc/ssh/sshd_config  /etc/ssh/sshd_config.d/*
+/etc/ssh/sshd_config:Include /etc/ssh/sshd_config.d/*.conf
+/etc/ssh/sshd_config.d/50-redhat.conf:Include /etc/crypto-policies/back-ends/opensshserver.config
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -29897,9 +30504,11 @@ $ sudo chgrp root /etc/ssh/sshd_config</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -al /etc/ssh/sshd_config
+-rw-------. 1 root root 3766 Dec 25 07:35 /etc/ssh/sshd_config
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -30024,9 +30633,11 @@ $ sudo chown root /etc/ssh/sshd_config</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -al /etc/ssh/sshd_config
+-rw-------. 1 root root 3766 Dec 25 07:35 /etc/ssh/sshd_config
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -30151,9 +30762,11 @@ $ sudo chmod 0600 /etc/ssh/sshd_config</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -al /etc/ssh/sshd_config
+-rw-------. 1 root root 3766 Dec 25 07:35 /etc/ssh/sshd_config
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -30285,9 +30898,12 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -l /etc/ssh/*_key
+-rw-r-----. 1 root ssh_keys  492 Dec 25 07:43 /etc/ssh/ssh_host_ecdsa_key
+-rw-r-----. 1 root ssh_keys 2578 Dec 25 07:43 /etc/ssh/ssh_host_rsa_key
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -30421,9 +31037,12 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/ssh/*.pub
+644 /etc/ssh/ssh_host_ecdsa_key.pub
+644 /etc/ssh/ssh_host_rsa_key.pub
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -35342,9 +35961,17 @@ $ sudo dnf install usbguard</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001958</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list installed usbguard
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+usbguard.x86_64                                                1.0.0-15.el9                                                @AppStream
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -35473,9 +36100,11 @@ $ sudo systemctl enable --now usbguard</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001958</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl is-active usbguard
+active
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -35618,9 +36247,11 @@ AuditBackend=LinuxAudit</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000169</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep AuditBackend /etc/usbguard/usbguard-daemon.conf
+AuditBackend=LinuxAudit
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -35753,9 +36384,16 @@ Note: Enabling and starting usbguard without properly configuring it for an indi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001958</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># usbguard list-rules
+1: allow id 1d6b:0001 serial "0000:02:00.0" name "UHCI Host Controller" hash "3QuFY0nRVqo+mgnIkqiXmmirRvxPDeP7P3mintodpys=" parent-hash "42PXRxhXx8adD0H10oXgQnna1ED6vikevkSl6cwgdOI=" with-interface 09:00:00 with-connect-type ""
+2: allow id 1d6b:0002 serial "0000:02:02.0" name "EHCI Host Controller" hash "8G9+DxPfLbVnCuw59P+Fxfu6Yxy0AVsuFJ3qRPS0XNM=" parent-hash "Ps1yU1JiZl/dOj3LXAXp9uWQiNXeY3IT3NGW0E96O30=" with-interface 09:00:00 with-connect-type ""
+3: allow id 0e0f:0003 serial "" name "VMware Virtual USB Mouse" hash "F4BFfAiFQzjQxG8oQHVYMFiDF2/zhhARDrRSIj6oij8=" parent-hash "3QuFY0nRVqo+mgnIkqiXmmirRvxPDeP7P3mintodpys=" via-port "1-1" with-interface 03:01:02 with-connect-type "unknown"
+4: allow id 0e0f:0002 serial "" name "VMware Virtual USB Hub" hash "0cDIzeFX6eYg1fPydeh+aK2a/vRVjjj9bIasbHuN5sE=" parent-hash "3QuFY0nRVqo+mgnIkqiXmmirRvxPDeP7P3mintodpys=" via-port "1-2" with-interface 09:00:00 with-connect-type "unknown"
+5: allow id 0e0f:000b serial "" name "VMware Virtual USB Video Device" hash "hNL4D71N3sPcZOacmMFpuNeCXW/+4ZKHO9S2CPnJfs8=" parent-hash "8G9+DxPfLbVnCuw59P+Fxfu6Yxy0AVsuFJ3qRPS0XNM=" via-port "2-1" with-interface { 0e:01:00 0e:02:00 0e:02:00 0e:02:00 0e:02:00 0e:02:00 } with-connect-type "unknown"
+6: allow id 0e0f:0008 serial "000650268328" name "Virtual Bluetooth Adapter" hash "mx5CJc3v1b6cEpEwxLABwRw2mq2Ev8Ia8eatgaX9KgY=" parent-hash "0cDIzeFX6eYg1fPydeh+aK2a/vRVjjj9bIasbHuN5sE=" with-interface { e0:01:01 e0:01:01 e0:01:01 e0:01:01 e0:01:01 e0:01:01 e0:01:01 } with-connect-type "unknown"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -36565,9 +37203,10 @@ If the account is for an application, the requirement for a umask less restricti
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -ri umask /home/
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -37371,9 +38010,14 @@ If a local interactive user requires path variables to reference a directory own
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i path= /home/*/.*
+grep: /home/temp.admin/.: Is a directory
+grep: /home/temp.admin/..: Is a directory
+/home/temp.admin/.bashrc:    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+grep: /home/temp.admin/.ssh: Is a directory
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -37634,9 +38278,10 @@ $ sudo chmod 0750 /home/wadea</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># pwck -r
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -37771,9 +38416,13 @@ $ sudo chgrp users /home/wadea</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -ld $(awk -F: '($3&gt;=1000)&amp;&amp;($7 !~ /nologin/){print $6}' /etc/passwd)
+drwx------. 4 temp.admin temp.admin 122 Dec 25 09:50 /home/temp.admin
+# grep $(grep temp.admin /etc/passwd | awk -F: '{print $4}') /etc/group
+temp.admin:x:1000:
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -38961,9 +39610,10 @@ $ sudo chmod 0755 &lt;file&gt;</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find /home -perm -002 -type f -name ".[^.]*" -exec ls -ld {} \;
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -39096,9 +39746,17 @@ $ sudo dnf install tmux</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000058</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed tmux
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+tmux.x86_64                                                   3.2a-5.el9                                                    @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -41255,9 +41913,12 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002696</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sestatus | grep policy
+Loaded policy name:             targeted
+Max kernel policy version:      33
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -41537,9 +42198,17 @@ $ sudo dnf install policycoreutils</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001084</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed policycoreutils
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+policycoreutils.x86_64                                              3.5-2.el9                                               @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -41666,9 +42335,17 @@ $ sudo dnf install policycoreutils-python-utils</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed policycoreutils-python-utils
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+policycoreutils-python-utils.noarch                                       3.5-2.el9                                        @AppStream
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -41795,9 +42472,17 @@ $ sudo dnf install sudo</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002235</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed sudo
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+sudo.x86_64                                                  1.9.5p2-9.el9                                                  @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -42610,9 +43295,17 @@ $ sudo dnf install fapolicyd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001774</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed fapolicyd
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+fapolicyd.x86_64                                               1.3.2-100.el9                                               @AppStream
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -42751,9 +43444,11 @@ $ systemctl enable --now fapolicyd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001774</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl is-active fapolicyd
+active
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47183,9 +47878,11 @@ $ sudo systemctl restart sssd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001954</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep certificate_verification /etc/sssd/sssd.conf /etc/sssd/conf.d/*.conf | grep -v "^#"
+/etc/sssd/conf.d/certificate_verification.conf:certificate_verification = ocsp_dgst = sha512
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47312,9 +48009,17 @@ $ sudo dnf install pcsc-lite</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001948</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed pcsc-lite
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+pcsc-lite.x86_64                                                1.9.4-1.el9                                                 @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47578,9 +48283,17 @@ $ sudo dnf install opensc</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001953</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed opensc
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+opensc.x86_64                                                 0.23.0-2.el9                                                  @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -48108,9 +48821,11 @@ rm -f /etc/*.keytab</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000803</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -al /etc/*.keytab
+ls: cannot access '/etc/*.keytab': No such file or directory
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -48731,9 +49446,17 @@ AIDE found NO differences between database and filesystem. Looks okay!!
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002696</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed aide
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+aide.x86_64                                                  0.16-100.el9                                                  @AppStream
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -49578,9 +50301,17 @@ $ sudo dnf install rsyslogd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001851</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed rsyslog
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+rsyslog.x86_64                                              8.2102.0-117.el9                                               @AppStream
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -49713,9 +50444,17 @@ $ sudo dnf install rsyslog-gnutls</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000803</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed rsyslog-gnutls
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+rsyslog-gnutls.x86_64                                           8.2102.0-117.el9                                           @AppStream
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -49840,9 +50579,11 @@ $ sudo systemctl enable --now rsyslog</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl is-active rsyslog
+active
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -51183,9 +51924,17 @@ $ sudo dnf install audit</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002884</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed audit
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+audit.x86_64                                                 3.0.7-104.el9                                                  @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -51408,9 +52157,34 @@ $ sudo systemctl enable --now auditd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002884</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl status auditd.service
+● auditd.service - Security Auditing Service
+     Loaded: loaded (/usr/lib/systemd/system/auditd.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2023-12-25 09:46:40 UTC; 49min ago
+       Docs: man:auditd(8)
+             https://github.com/linux-audit/audit-documentation
+    Process: 1038 ExecStart=/sbin/auditd (code=exited, status=0/SUCCESS)
+    Process: 1056 ExecStartPost=/sbin/augenrules --load (code=exited, status=0/SUCCESS)
+   Main PID: 1052 (auditd)
+      Tasks: 2 (limit: 12034)
+     Memory: 5.6M
+        CPU: 142ms
+     CGroup: /system.slice/auditd.service
+             └─1052 /sbin/auditd
+
+Dec 25 09:46:40 localhost augenrules[1088]: enabled 2
+Dec 25 09:46:40 localhost augenrules[1088]: failure 2
+Dec 25 09:46:40 localhost augenrules[1088]: pid 1052
+Dec 25 09:46:40 localhost augenrules[1088]: rate_limit 0
+Dec 25 09:46:40 localhost augenrules[1088]: backlog_limit 8192
+Dec 25 09:46:40 localhost augenrules[1088]: lost 0
+Dec 25 09:46:40 localhost augenrules[1088]: backlog 0
+Dec 25 09:46:40 localhost augenrules[1088]: backlog_wait_time 60000
+Dec 25 09:46:40 localhost augenrules[1088]: backlog_wait_time_actual 0
+Dec 25 09:46:40 localhost systemd[1]: Started Security Auditing Service.
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -53173,9 +53947,15 @@ $ sudo chgrp ${GROUP} /var/log/audit</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep log_group /etc/audit/auditd.conf
+log_group = root
+# grep -iw log_file /etc/audit/auditd.conf
+log_file = /var/log/audit/audit.log
+# stat -c "%G %n" /var/log/audit/audit.log
+root /var/log/audit/audit.log
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -53322,9 +54102,13 @@ $ sudo chown root /var/log/audit</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -iw log_file /etc/audit/auditd.conf
+log_file = /var/log/audit/audit.log
+# ls -ld /var/log/audit
+drwx------. 2 root root 99 Dec 25 08:22 /var/log/audit
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -53489,9 +54273,13 @@ $ sudo chmod 0400 $log_file.*</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001314</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -iw log_file /etc/audit/auditd.conf
+log_file = /var/log/audit/audit.log
+# ls -la /var/log/audit/*.log
+-rw-------. 1 root root 8027216 Dec 25 11:31 /var/log/audit/audit.log
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -54017,9 +54805,23 @@ $ sudo chmod 0640 /etc/audit/auditd.conf</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000171</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n"  /etc/audit/rules.d/*.rules
+640 /etc/audit/rules.d/11-loginuid.rules
+640 /etc/audit/rules.d/access.rules
+640 /etc/audit/rules.d/actions.rules
+600 /etc/audit/rules.d/audit.rules
+640 /etc/audit/rules.d/audit_rules_usergroup_modification.rules
+640 /etc/audit/rules.d/delete.rules
+640 /etc/audit/rules.d/immutable.rules
+640 /etc/audit/rules.d/logins.rules
+640 /etc/audit/rules.d/modules.rules
+640 /etc/audit/rules.d/perm_mod.rules
+640 /etc/audit/rules.d/privileged.rules
+640 /etc/audit/rules.d/setgid.rules
+640 /etc/audit/rules.d/setuid.rules
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -54144,9 +54946,11 @@ $ sudo chmod 0640 /etc/audit/auditd.conf</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000171</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># stat -c "%a %n" /etc/audit/auditd.conf
+640 /etc/audit/auditd.conf
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -54281,9 +55085,10 @@ $ sudo grubby --update-kernel=ALL --args=audit_backlog_limit=8192</ATTRIBUTE_DAT
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001849</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grubby --info=ALL | grep args | grep -v 'audit_backlog_limit=8192'
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -54552,9 +55357,17 @@ $ sudo dnf install audispd-plugins</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001851</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed audispd-plugins
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+audispd-plugins.x86_64                                            3.0.7-104.el9                                             @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -54853,9 +55666,12 @@ The audit daemon must be restarted for the changes to take effect.</ATTRIBUTE_DA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002884</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># auditctl -l | grep chmod
+-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid&gt;=1000 -F auid!=-1 -F key=perm_mod
+-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid&gt;=1000 -F auid!=-1 -F key=perm_mod
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -55171,9 +55987,14 @@ The audit daemon must be restarted for the changes to take effect.</ATTRIBUTE_DA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002884</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># auditctl -l | grep xattr
+-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid&gt;=1000 -F auid!=-1 -F key=perm_mod
+-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid&gt;=1000 -F auid!=-1 -F key=perm_mod
+-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid=0 -F key=perm_mod
+-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid=0 -F key=perm_mod
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -60733,9 +61554,14 @@ The audit daemon must be restarted for the changes to take effect.</ATTRIBUTE_DA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002884</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep "umount2" /etc/audit/audit.*
+/etc/audit/audit.rules:-a always,exit -F arch=b32 -S umount2 -F auid&gt;=1000 -F auid!=unset -F key=perm_mod
+/etc/audit/audit.rules:-a always,exit -F arch=b64 -S umount2 -F auid&gt;=1000 -F auid!=unset -F key=perm_mod
+/etc/audit/audit.rules.prev:-a always,exit -F arch=b32 -S umount2 -F auid&gt;=1000 -F auid!=unset -F key=perm_mod
+/etc/audit/audit.rules.prev:-a always,exit -F arch=b64 -S umount2 -F auid&gt;=1000 -F auid!=unset -F key=perm_mod
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -62949,9 +63775,11 @@ Reboot the system for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002450</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># fips-mode-setup --check
+FIPS mode is enabled.
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -63084,9 +63912,34 @@ If any interactive user password hash does not begin with "$6", this is a findin
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000803</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># cut -d: -f2 /etc/shadow
+!$6$d360miyxTgw9fhh0$dzDkIa2WYUz7EsuCGhyqaMM4Fq.IcHturr1yZzL992R1nMOGI/5yY9aWgbpF9fMdQl2vEds2b3tUykremDpuH1
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+!!
+!!
+!!
+!!
+!!
+!!
+!!
+!!
+!!
+!*
+$6$x6t37z3qnhCCAWZ/$WUe7VHWaEnTyZDX6/Ttcqtmj5jmutHUp8TaAx.zOo/34YgLHGUbYz8.ZoQA/rsu9Ef9oH9cNuelsFIbIbEhxX/
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -63354,9 +64207,12 @@ password sufficient pam_unix.so sha512</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000196</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep "^password.*pam_unix.so.*sha512" /etc/pam.d/password-auth
+password    sufficient                                   pam_unix.so sha512 shadow  use_authtok
+#
+</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -63493,9 +64349,17 @@ $ sudo dnf install crypto-policies</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-003123</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed crypto-policies
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+crypto-policies.noarch                                      20230731-1.git94f0e2c.el9                                       @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -63622,9 +64486,10 @@ $ sudo dnf reinstall crypto-policies</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002450</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># rpm -V crypto-policies
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -63906,9 +64771,11 @@ $ sudo ln -s /etc/crypto-policies/back-ends/krb5.config /usr/share/crypto-polici
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000803</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># file /etc/crypto-policies/back-ends/krb5.config
+/etc/crypto-policies/back-ends/krb5.config: symbolic link to /usr/share/crypto-policies/FIPS/krb5.txt
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -64044,9 +64911,11 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002418</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># update-crypto-policies --show
+FIPS
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -64179,9 +65048,11 @@ Edit the "/etc/pki/tls/openssl.cnf" and add or modify the following line:
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001453</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i opensslcnf.config /etc/pki/tls/openssl.cnf
+.include = /etc/crypto-policies/back-ends/opensslcnf.config
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -64461,9 +65332,13 @@ Reboot the system for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-003123</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># update-crypto-policies --show
+FIPS
+# update-crypto-policies --check
+The configured policy matches the generated policy
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
