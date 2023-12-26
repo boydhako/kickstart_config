@@ -519,9 +519,23 @@ By using this IS (which includes any device attached to this IS), you consent to
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001388</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># cat /etc/issue
+You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
+
+By using this IS (which includes any device attached to this IS), you consent to the following conditions:
+
+-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.
+
+-At any time, the USG may inspect and seize data stored on this IS.
+
+-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.
+
+-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.
+
+-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -652,7 +666,7 @@ If the daemon is not running, this is a finding.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001233</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS>Unavoidable manual </COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -914,9 +928,11 @@ $ sudo systemctl enable --now rngd</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># systemctl is-active rngd
+active
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -1606,7 +1622,7 @@ Confirm password:</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000213</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS>Unavoidable manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -1871,7 +1887,7 @@ $ sudo grubby --update-kernel=ALL'</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000213</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS>Unavoidable manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -4097,9 +4113,14 @@ blacklist atm</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -r atm /etc/modprobe.conf /etc/modprobe.d/*
+grep: /etc/modprobe.conf: No such file or directory
+/etc/modprobe.d/atm.conf:# Modifying "atm" install to "/bin/false" - 2023-12-26
+/etc/modprobe.d/atm.conf:install atm /bin/false
+/etc/modprobe.d/atm.conf:blacklist atm
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -4225,9 +4246,14 @@ blacklist can</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -r can /etc/modprobe.conf /etc/modprobe.d/*
+grep: /etc/modprobe.conf: No such file or directory
+/etc/modprobe.d/can.conf:# Modifying "can" install to "/bin/false" - 2023-12-26
+/etc/modprobe.d/can.conf:install can /bin/false
+/etc/modprobe.d/can.conf:blacklist can
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -4353,9 +4379,15 @@ blacklist firewire-core</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -r firewire-core /etc/modprobe.conf /etc/modprobe.d/*
+grep: /etc/modprobe.conf: No such file or directory
+/etc/modprobe.d/firewire-core.conf:# Creating firewire-core module config - 2023-12-26
+/etc/modprobe.d/firewire-core.conf:install firewire-core /bin/true
+/etc/modprobe.d/firewire-core.conf:# Adding firewire-core to blacklist - 2023-12-26
+/etc/modprobe.d/firewire-core.conf:blacklist firewire-core
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -4485,9 +4517,14 @@ blacklist sctp</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -r sctp /etc/modprobe.conf /etc/modprobe.d/*
+grep: /etc/modprobe.conf: No such file or directory
+/etc/modprobe.d/sctp.conf:# Modifying "sctp" install to "/bin/false" - 2023-12-26
+/etc/modprobe.d/sctp.conf:install sctp /bin/false
+/etc/modprobe.d/sctp.conf:blacklist sctp
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -4617,9 +4654,14 @@ blacklist tipc</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -r tipc /etc/modprobe.conf /etc/modprobe.d/*
+grep: /etc/modprobe.conf: No such file or directory
+/etc/modprobe.d/tipc.conf:# Modifying "tipc" install to "/bin/false" - 2023-12-26
+/etc/modprobe.d/tipc.conf:install tipc /bin/false
+/etc/modprobe.d/tipc.conf:blacklist tipc
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -7419,16 +7461,9 @@ $ sudo dnf remove nfs-utils</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>NotAFinding</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS># dnf list --installed nfs-utils
-Updating Subscription Management repositories.
-Unable to read consumer identity
-
-This system is not registered with an entitlement server. You can use subscription-manager to register.
-
-Error: No matching Packages to list
-#</COMMENTS>
+				<COMMENTS>nfs-utils is a required package for ipa-client for centralized authentication.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -8814,9 +8849,17 @@ $ sudo dnf install openssl-pkcs11</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001954</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed openssl-pkcs11
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+openssl-pkcs11.x86_64                                                                                                                  0.4.11-7.el9                                                                                                                  @anaconda
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -9356,9 +9399,24 @@ $ sudo dnf install s-nail</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001744</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># dnf list --installed mailx
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Error: No matching Packages to list
+# dnf list --installed s-nail
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Installed Packages
+s-nail.x86_64                                                                                                                     14.9.22-6.el9                                                                                                                     @AppStream
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -11749,7 +11807,7 @@ If the "/boot" file system does not have the "nodev" option set, this is a findi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS>Unavoidable manual STIG Check</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -11882,7 +11940,7 @@ If the /boot file system does not have the "nosuid" option set, this is a findin
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS>Unavoidable manual STIG Check</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -12015,7 +12073,7 @@ If the /boot/efi file system does not have the "nosuid" option set, this is a fi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001764</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS>Unavoidable manual STIG Check</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -14345,9 +14403,14 @@ blacklist cramfs</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -r cramfs /etc/modprobe.conf /etc/modprobe.d/*
+grep: /etc/modprobe.conf: No such file or directory
+/etc/modprobe.d/cramfs.conf:# Modifying "cramfs" install to "/bin/false" - 2023-12-26
+/etc/modprobe.d/cramfs.conf:install cramfs /bin/false
+/etc/modprobe.d/cramfs.conf:blacklist cramfs
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -21904,9 +21967,18 @@ $ sudo firewall-cmd --reload</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># firewall-cmd --state
+running
+# firewall-cmd --get-active-zones
+public
+  interfaces: ens160
+# firewall-cmd --info-zone=public | grep target
+  target: DROP
+# firewall-cmd --permanent --info-zone=public | grep target
+  target: DROP
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -23591,9 +23663,30 @@ $ sudo systemctl reload NetworkManager</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># NetworkManager --print-config
+# NetworkManager configuration: /etc/NetworkManager/NetworkManager.conf (run: 15-carrier-timeout.conf)
+
+[main]
+# plugins=
+# rc-manager=auto
+# migrate-ifcfg-rh=false
+# auth-polkit=true
+# dhcp=internal
+# iwd-config-path=
+dns=none
+configure-and-quit=no
+
+[logging]
+# backend=journal
+# audit=false
+
+[device]
+# wifi.backend=wpa_supplicant
+
+# no-auto-default file "/var/lib/NetworkManager/no-auto-default.state"
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -28352,9 +28445,14 @@ Banner /etc/issue</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001388</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i banner /etc/ssh/sshd_config
+# no default banner path
+#Banner none
+# Adding "banner /etc/issue " - 2023-12-26
+banner /etc/issue
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -28485,9 +28583,13 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000067</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i LogLevel /etc/ssh/sshd_config
+#LogLevel INFO
+# Adding "LogLevel VERBOSE " - 2023-12-26
+LogLevel VERBOSE
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -28630,9 +28732,13 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000768</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i PubkeyAuthentication /etc/ssh/sshd_config
+#PubkeyAuthentication yes
+# Adding "PubkeyAuthentication yes " - 2023-12-26
+PubkeyAuthentication yes
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -28767,9 +28873,13 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000766</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i PermitEmptyPasswords /etc/ssh/sshd_config
+#PermitEmptyPasswords no
+# Adding "PermitEmptyPasswords no " - 2023-12-26
+PermitEmptyPasswords no
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -28904,9 +29014,14 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000770</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i PermitRootLogin /etc/ssh/sshd_config
+#PermitRootLogin prohibit-password
+# the setting of "PermitRootLogin without-password".
+# Adding "PermitRootLogin no " - 2023-12-26
+PermitRootLogin no
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -29035,9 +29150,14 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000877</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i usepam /etc/ssh/sshd_config
+# WARNING: 'UsePAM no' is not supported in RHEL and may cause several
+#UsePAM no
+# Adding "UsePAM yes " - 2023-12-26
+UsePAM yes
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -29843,9 +29963,14 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i hostbasedauthentication /etc/ssh/sshd_config
+#HostbasedAuthentication no
+# HostbasedAuthentication
+# Adding "HostbasedAuthentication no " - 2023-12-26
+HostbasedAuthentication no
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -29978,9 +30103,13 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i permituserenvironment /etc/ssh/sshd_config
+#PermitUserEnvironment no
+# Adding "PermitUserEnvironment no " - 2023-12-26
+PermitUserEnvironment no
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -30125,9 +30254,13 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002421</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i rekeyLimit /etc/ssh/sshd_config
+#RekeyLimit default none
+# Adding "RekeyLimit 1G 1h" - 2023-12-26
+RekeyLimit 1G 1h
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -30270,9 +30403,13 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002361</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS>Confusing</COMMENTS>
+				<COMMENTS># grep -i countmax /etc/ssh/sshd_config
+#ClientAliveCountMax 3
+# Modifying ClientAliveCountMax to 1 - 2023-12-26
+ClientAliveCountMax 1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -30423,9 +30560,13 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002891</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i interval /etc/ssh/sshd_config
+#ClientAliveInterval 0
+# Adding "ClientAliveInterval 600 " - 2023-12-26
+ClientAliveInterval 600
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -32323,9 +32464,12 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -ir usepriv  /etc/ssh/sshd_config /etc/ssh/sshd_config.d/*
+/etc/ssh/sshd_config:# Adding "UsePrivilegeSeparation sandbox " - 2023-12-26
+/etc/ssh/sshd_config:UsePrivilegeSeparation sandbox
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -32456,9 +32600,13 @@ $ sudo systemctl restart sshd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i x11uselocal /etc/ssh/sshd_config
+#X11UseLocalhost yes
+# Adding "X11UseLocalhost yes " - 2023-12-26
+X11UseLocalhost yes
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -35899,9 +36047,14 @@ blacklist usb-storage</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001958</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -r usb-storage /etc/modprobe.conf /etc/modprobe.d/*
+grep: /etc/modprobe.conf: No such file or directory
+/etc/modprobe.d/usb-storage.conf:# Modifying "usb-storage" install to "/bin/false" - 2023-12-26
+/etc/modprobe.d/usb-storage.conf:install usb-storage /bin/false
+/etc/modprobe.d/usb-storage.conf:blacklist usb-storage
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -36601,9 +36754,14 @@ Reboot the system for the settings to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001443</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -r bluetooth /etc/modprobe.conf /etc/modprobe.d/*
+grep: /etc/modprobe.conf: No such file or directory
+/etc/modprobe.d/bluetooth.conf:# Modifying "bluetooth" install to "/bin/false" - 2023-12-26
+/etc/modprobe.d/bluetooth.conf:install bluetooth /bin/false
+/etc/modprobe.d/bluetooth.conf:blacklist bluetooth
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -49340,7 +49498,7 @@ Obtain a valid copy of the DoD root CA file from the PKI CA certificate bundle f
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001991</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS>Unavoidable manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
