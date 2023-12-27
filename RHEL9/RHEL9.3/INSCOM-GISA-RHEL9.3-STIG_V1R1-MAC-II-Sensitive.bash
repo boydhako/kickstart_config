@@ -2,6 +2,119 @@
 date="$(date +%F)"
 nmcfg="/etc/NetworkManager/NetworkManager.conf"
 sshdcfg="/etc/ssh/sshd_config"
+fipscryptodir="/usr/share/crypto-policies/FIPS"
+cryptodir="/etc/crypto-policies/back-ends"
+
+function AUDITCFG {
+	cfgdir="/etc/audit"
+	rule="$1"
+	cfg="$cfgdir/$2"
+	setting="$3"
+	value="$4"
+
+	if [ ! -f "$cfg" ]; then
+		printf "# %s - Created %s with \"%s=%s\" - %s\n%s=%s\n" "$rule" "$cfg" "$setting" "$value" "$date" "$setting" "$value" > $cfg
+	else
+		currentvalue="$(cat $cfg | tr -d [:blank:] | awk -F= -v setting="$setting" '$1 == setting {print $2}' | tail -n 1)"
+
+		if [ -z "$currentvalue" ]; then
+			printf "# %s - Adding \"%s=%s\" - %s\n%s=%s\n" "$rule" "$setting" "$value" "$date" "$setting" "$value" >> $cfg
+		elif [ "$currentvalue" != "$value" ]; then
+			str="$(egrep -e "^$setting" $cfg)"
+			sed -i "s#^$str#\# $rule - Modifying \"$setting\" from \"$currentvalue\" to \"$value\" - $date\n$setting=$value#" $cfg
+		fi
+	fi
+}
+
+function AUDITPLUGINCFG {
+	cfgdir="/etc/audit/plugins.d"
+	rule="$1"
+	cfg="$cfgdir/$2"
+	setting="$3"
+	value="$4"
+
+	if [ ! -f "$cfg" ]; then
+		printf "# %s - Creating %s - %s\n%s=%s\n" "$rule" "$cfg" "$date" "$setting" "$value" > $cfg
+	else
+		if [ "$(grep -e "^$setting" $cfg | wc -l)" -lt "1" ]; then
+			printf "# %s - Adding \"%s=%s\" - %s\n%s=%s\n" "$rule" "$setting" "$value" "$date" "$setting" "$value" >> $cfg
+		else
+			currentvalue="$(cat $cfg | tr -d [:blank:] | awk -F= -v setting="$setting" '$1 == setting {print $2}')"
+
+			if [ "$currentvalue" != "$value" ]; then
+				str="$(grep -e "^$setting" $cfg | tail -n 1)"
+				sed -i "s#^$str#\# $rule - Modifying \"$setting\" from \"$currentvalue\" to \"$value\" - $date\n$setting=$value#g" $cfg
+			fi
+		fi
+	fi
+}
+
+function AIDEATTRCFG {
+	cfg="/etc/aide.conf"
+	rule="$1"
+	setting="$2"
+
+	for var in $(grep -v -e "^#" $cfg | grep -e "=" | tr -d [:blank:] | awk -F= '{print $1}' | sort | uniq); do
+		case $var in
+			database*)
+			;;
+			gzip_dbout)
+			;;
+			verbose)
+			;;
+			report_url)
+			;;
+			*)
+				if [ "$(grep -e "^$var" $cfg | grep -e "$setting" | wc -l)" -lt "1" ]; then
+					str="$(grep -e "^$var" $cfg)"
+					sed -i "s#^$str#$str+$setting#g" $cfg
+				fi
+			;;
+		esac
+	done
+}
+
+function LOGINDEFSCFG {
+	cfg="/etc/login.defs"
+	rule="$1"
+	setting="$2"
+	value="$3"
+
+	currentvalue="$(grep -e "^$setting" $cfg | awk '{print $2}')"
+
+	if [ -z "$currentvalue" ]; then
+		printf "# %s - Adding \"%s\" as \"%s\"\n%s %s\n" "$rule" "$setting" "$value" "$setting" "$value" >> $cfg
+	elif [ "$currentvalue" != "$value" ]; then
+		sed -i "s#^$setting.*#\# $rule - Modifying \"$setting\" to \"$value\"\n$setting $value#g" $cfg
+	fi
+}
+
+function SYSTEMDCFG {
+	sysdir="/etc/systemd"
+	rule="$1"
+	cfg="$sysdir/$2"
+	section="$3"
+	setting="$4"
+	value="$5"
+
+	if [ ! -f "$cfg" ]; then
+		printf "# Creating %s %s with \"%s=%s\" - %s\n[%s]\n%s=%s\n" "$rule" "$cfg" "$setting" "$value" "$date" "$section" "$setting" "$value" > $cfg
+	else
+		if [ "$(grep -e "^\[$section\]" $cfg | wc -l)" -lt "1" ]; then
+			printf "# Adding %s %s section with \"%s=%s\" - %s\n[%s]\n%s=%s\n" "$rule" "$section" "$setting" "$value" "$date" "$section" "$setting" "$value" >> $cfg
+		else
+			if [ -z "$(grep -e "^$setting" $cfg)" ]; then
+				sed -i "s#^\[$section\]#\[$section\]\n\# Adding $rule \"$setting=$value\" - $date\n$setting=$value#" $cfg
+			else
+				currentvalue="$(grep -e "^$setting" $cfg | awk -F= '{print $2}')"
+				if [ "$currentvalue" != "$value" ]; then
+					sed -i "s#^$setting.*#\# $rule Modifying \"$setting\" to \"$value\" - $date\n$setting=$value#" $cfg
+				fi
+			fi
+		fi
+	fi
+	systemctl restart systemd-logind
+}
 
 function SYSCTLCFG {
 	rule="$1"
@@ -82,7 +195,6 @@ function SSHDCFG {
 }
 
 function SSHCRYPTO {
-	cryptodir="/etc/crypto-policies/back-ends"
 	rule="$1"
 	file="$cryptodir/$2"
 	setting="$3"
@@ -279,38 +391,127 @@ function V257990 {
 }
 
 function V258236 {
-	cryptobackend="/etc/crypto-policies/back-ends"
-	for file in $(find $cryptobackend -type f); do
+	for file in $(find $cryptodir -type f); do
 		name="$(basename --suffix .config $file)"
-		if [ "$(find /usr/share/crypto-policies/FIPS -name "$name.txt" | wc -l)" -ge "1" ]; then
-			cfgtxt="$(find /usr/share/crypto-policies/FIPS -name "$name.txt" | head -n 1)"
+		if [ "$(find $fipscryptodir -name "$name.txt" | wc -l)" -ge "1" ]; then
+			cfgtxt="$(find $fipscryptodir -name "$name.txt" | head -n 1)"
 			mv $file /root/$name-crypto-back-end-$date.bck
-			ln -s $cfgtxt $cryptobackend/$name.config
+			ln -s $cfgtxt $cryptodir/$name.config
 		fi
 	done
-	for link in $(find $cryptobackend -type l); do
+	for link in $(find $cryptodir -type l); do
 		file="$(file $link | awk '{print $NF}')"
-		if [ "$(dirname $file)" != "/usr/share/crypto-policies/FIPS" ]; then
+		if [ "$(dirname $file)" != "$fipscryptodir" ]; then
 			name="$(basename --suffix .txt $file)"
-			cfg="$(find /usr/share/crypto-policies/FIPS -name "$name.txt")"
+			cfg="$(find $fipscryptodir -name "$name.txt")"
 			unlink $link
-			ln -s $cfg $cryptobackend/$name.config
+			ln -s $cfg $cryptodir/$name.config
 		fi
 	done
 
-	for file in $(find /usr/share/crypto-policies/FIPS -type f); do
+	for file in $(find $fipscryptodir -type f); do
 		name="$(basename --suffix .txt $file)"
-		cfg="$cryptobackend/$name.config"
+		cfg="$cryptodir/$name.config"
 		if [ ! -f "$cfg" ]; then
 			ln -s $file $cfg
 		fi
 	done
 }
 
+function V258065 {
+	tmuxcfg="/etc/tmux.conf"
+	for setting in lock-command lock-session; do
+		if [ "$(grep -Ei $setting $tmuxcfg | wc -l)" -lt "1" ]; then
+			case $setting in
+				lock-command)
+					printf "set -g lock-command vlock\n" >> $tmuxcfg
+				;;
+				lock-session)
+					printf "bind X lock-session\n" >> $tmuxcfg
+				;;
+			esac
+			tmux source $tmuxcfg
+		fi
+	done
+}
+
+function V258077 {
+	SYSTEMDCFG $FUNCNAME logind.conf Login StopIdleSessionSec 900
+}
+
+function V258108 {
+	LOGINDEFSCFG $FUNCNAME PASS_MIN_LEN 15
+}
+
+function V258119 {
+	LOGINDEFSCFG $FUNCNAME SHA_CRYPT_MIN_ROUNDS 5000
+	LOGINDEFSCFG $FUNCNAME SHA_CRYPT_MAX_ROUNDS 5000
+}
+
+function V258136 {
+	AIDEATTRCFG $FUNCNAME sha512
+}
+
+function V258145 {
+	AUDITPLUGINCFG $FUNCNAME syslog.conf active yes
+}
+
+function V258168 {
+	AUDITCFG $FUNCNAME auditd.conf freq 100
+}
+
+function PAMDCFG {
+	cfgdir="/etc/pam.d"
+	rule="$1"
+	cfg="$cfgdir/$2"
+	type="$3"
+	ctrl="$4"
+	lib="$5"
+	opt="$6"
+	value="$7"
+	optvalue="$opt=$value"
+
+	if [ -z "$value" ]; then
+		optvalue="$opt"
+	fi
+
+	if [ ! -f "$cfg" ]; then
+		printf "# %s - Creating %s with \"%s %s %s\" - %s\n%s\t%s\t%s\n" "$rule" "$cfg" "$type" "$ctrl" "$optvalue" "$date" "$type" "$ctrl" "$optvalue" > $cfg
+	elif [ "$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$3 == lib {print $0}' $cfg | wc -l)" -lt "1" ]; then
+		str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type {print $0}' $cfg | head -n 1)"
+		sed -i "s#^$str#$type\t$ctrl\t$lib\t$optvalue\n$str#" $cfg
+	elif [ "$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$optvalue" | wc -l)" -lt "1" ]; then
+		str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | head -n 1)"
+		sed -i "s#^$str#$str $optvalue#" $cfg
+	elif [ "$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$optvalue" | wc -l)" -ge "1" ]; then
+		if [ "$(echo $optvalue | grep -e "=" | wc -l)" -ge "1" ]; then
+			for currentvalue in $(cat $cfg | sed 's/ /\n/g' | grep -e "$opt" | awk -F= '{print $2}'); do
+				if [ "$currentvalue" != "$value" ]; then
+					str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$opt=$currentvalue")"
+					newstr="$(echo $str | sed "s#$setting=$currentvalue#$setting=$value#g")"
+					sed "s#^$str#$newstr#" $cfg
+				fi
+			done
+		fi
+	fi
+}
+
+function V258091 {
+	PAMDCFG $FUNCNAME system-auth password required pam_pwquality.so retry 4
+}
+
 function STIGIMPLEMENT {
-	V257990
-	V257989
-	V258236
+	V258091
+	#V258168
+	#V258145
+	#V258136
+	#V258119
+	#V258108
+	#V258077
+	#V258065
+	#V257990
+	#V257989
+	#V258236
 	#V257970
 	#V257967
 	#V257961
