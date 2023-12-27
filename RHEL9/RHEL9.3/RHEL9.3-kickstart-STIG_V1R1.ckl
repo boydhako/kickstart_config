@@ -23118,9 +23118,16 @@ server [ntp.server.name] iburst maxpoll 16</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002046</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep maxpoll /etc/chrony.conf
+server time.nist.gov iburst maxpoll 16
+# grep -i server /etc/chrony.conf
+# These servers were defined in the installation:
+server time.nist.gov iburst maxpoll 16
+# Use public servers from the pool.ntp.org project.
+# Use NTP servers from DHCP.
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -23530,9 +23537,12 @@ Replace [name server 1] and [name server 2] with the IPs of two different DNS re
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep nameserver /etc/resolv.conf
+nameserver 172.16.12.2
+nameserver 208.67.222.222
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -23956,9 +23966,11 @@ $ sudo postconf -e 'smtpd_client_restrictions = permit_mynetworks,reject'</ATTRI
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># postconf -n smtpd_client_restrictions
+smtpd_client_restrictions = permit_mynetworks,reject
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -49635,9 +49647,9 @@ $ sudo systemctl restart sssd.service</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000187</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -55830,9 +55842,9 @@ $ sudo newaliases</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000139</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -60039,9 +60051,11 @@ The audit daemon must be restarted for the changes to take effect.</ATTRIBUTE_DA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002884</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># auditctl -l | grep ssh-agent
+-a always,exit -S all -F path=/usr/bin/ssh-agent -F perm=x -F auid&gt;=1000 -F auid!=-1 -F key=privileged
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -60192,9 +60206,11 @@ The audit daemon must be restarted for the changes to take effect.</ATTRIBUTE_DA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-002884</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># auditctl -l | grep ssh-keysign
+-a always,exit -S all -F path=/usr/libexec/openssh/ssh-keysign -F perm=x -F auid&gt;=1000 -F auid!=-1 -F key=privileged
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
