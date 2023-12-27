@@ -15601,9 +15601,19 @@ $ sudo chmod 0740 /home/wadea/.&lt;INIT_FILE&gt;</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -l al /home/*/.[^.]*
+ls: cannot access 'al': No such file or directory
+-rw-------. 1 temp.admin temp.admin  34 Dec 26 11:04 /home/temp.admin/.bash_history
+-rw-r--r--. 1 temp.admin temp.admin  18 Nov 24  2022 /home/temp.admin/.bash_logout
+-rw-r-----. 1 temp.admin temp.admin 141 Nov 24  2022 /home/temp.admin/.bash_profile
+-rw-r-----. 1 temp.admin temp.admin 492 Nov 24  2022 /home/temp.admin/.bashrc
+
+/home/temp.admin/.ssh:
+total 4
+-rw-------. 1 temp.admin temp.admin 381 Dec 27 01:30 authorized_keys
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -20725,9 +20735,20 @@ $ sudo chown root [Public Directory]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001090</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># find / -xdev -type d -perm -0002 -uid +0 -print
+# find /boot -xdev -type d -perm -0002 -uid +0 -print
+# find /boot/efi -xdev -type d -perm -0002 -uid +0 -print
+# find /tmp -xdev -type d -perm -0002 -uid +0 -print
+# find /home -xdev -type d -perm -0002 -uid +0 -print
+# find /var -xdev -type d -perm -0002 -uid +0 -print
+# find /opt -xdev -type d -perm -0002 -uid +0 -print
+# find /opt/splunkforwarder -xdev -type d -perm -0002 -uid +0 -print
+# find /var/tmp -xdev -type d -perm -0002 -uid +0 -print
+# find /var/log -xdev -type d -perm -0002 -uid +0 -print
+# find /var/log/audit -xdev -type d -perm -0002 -uid +0 -print
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -25255,9 +25276,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.all.log_martians
+net.ipv4.conf.all.log_martians = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.conf.all.log_martians | tail -1
+net.ipv4.conf.all.log_martians=1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -25398,9 +25423,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.default.log_martians
+net.ipv4.conf.default.log_martians = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.conf.default.log_martians | tail -1
+net.ipv4.conf.default.log_martians=1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -26276,9 +26305,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.icmp_ignore_bogus_error_responses
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+# /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F net.ipv4.icmp_ignore_bogus_error_response | tail -1
+net.ipv4.icmp_ignore_bogus_error_responses=1
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -26717,9 +26750,13 @@ $ sudo sysctl --system</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># sysctl net.ipv4.conf.all.forwarding
+net.ipv4.conf.all.forwarding = 0
+# { /usr/lib/systemd/systemd-sysctl --cat-config; cat /etc/sysctl.conf; } | egrep -v '^(#|$)' | grep -F net.ipv4.conf.all.forwarding | tail -1
+net.ipv4.conf.all.forwarding=0
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -29574,9 +29611,11 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001453</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i ciphers /etc/crypto-policies/back-ends/openssh.config
+Ciphers aes-256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -29708,9 +29747,11 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001453</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i macs /etc/crypto-policies/back-ends/openssh.config
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -29844,7 +29885,7 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 				</STIG_DATA>
 				<STATUS>Not_Reviewed</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Confusing conflicting with V-257990</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -37903,9 +37944,9 @@ $ sudo chage -E $(date -d +3days +%Y-%m-%d) &lt;temporary_account_name&gt;</ATTR
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001682</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -40392,9 +40433,12 @@ $ tmux source-file /etc/tmux.conf</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000056</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -Ei 'lock-command|lock-session' /etc/tmux.conf
+set -g lock-command vlock
+bind X lock-session
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -42017,9 +42061,11 @@ Note: To preserve running user programs such as tmux, uncomment and/or edit "Kil
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001133</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i ^StopIdleSessionSec /etc/systemd/logind.conf
+StopIdleSessionSec=900
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -44000,9 +44046,11 @@ password required pam_pwquality.so retry=3</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000192</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># cat /etc/pam.d/system-auth | grep pam_pwquality
+password requisite pam_pwquality.so local_users_only retry=3
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -46360,9 +46408,15 @@ PASS_MIN_LEN 15</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000205</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i  pass_min_len /etc/login.defs
+#       PASS_MIN_LEN    Minimum acceptable password length.
+# Currently PASS_MIN_LEN is not supported
+# V258108 - Adding "PASS_MIN_LEN" as "15"
+# V258108 - Modifying "PASS_MIN_LEN" to "15"
+PASS_MIN_LEN 15
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -46624,9 +46678,14 @@ dictcheck=1</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS>confusing</COMMENTS>
+				<COMMENTS># grep dictcheck /etc/security/pwquality.conf /etc/pwquality.conf.d/*.conf
+/etc/security/pwquality.conf:# dictcheck = 1
+/etc/security/pwquality.conf:# Per CCE-88413-0: Set dictcheck = 1 in /etc/security/pwquality.conf
+/etc/security/pwquality.conf:dictcheck = 1
+grep: /etc/pwquality.conf.d/*.conf: No such file or directory
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -47830,9 +47889,16 @@ SHA_CRYPT_MIN_ROUNDS 5000</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000803</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep -i sha_crypt /etc/login.defs
+#SHA_CRYPT_MAX_ROUNDS 5000
+# Currently SHA_CRYPT_MIN_ROUNDS is not supported
+# V258119 - Adding "SHA_CRYPT_MIN_ROUNDS" as "5000"
+SHA_CRYPT_MIN_ROUNDS 5000
+# V258119 - Adding "SHA_CRYPT_MAX_ROUNDS" as "5000"
+SHA_CRYPT_MAX_ROUNDS 5000
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -48950,9 +49016,9 @@ $ sudo ssh-keygen -n [passphrase]</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000186</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Open</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS>Unavoidable manual</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -50280,9 +50346,29 @@ If AIDE is installed, ensure the "sha512" rule is present on all uncommented fil
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep sha512 /etc/aide.conf
+#sha512:        sha512 checksum
+# ALLXTRAHASHES = sha1+rmd160+sha256+sha512+whirlpool+tiger+haval+gost+crc32
+ALLXTRAHASHES = sha1+rmd160+sha256+sha512+tiger
+EVERYTHING = R+ALLXTRAHASHES+acl+xattrs+sha512
+# NORMAL = R+sha512
+NORMAL = p+i+n+u+g+s+m+c+acl+selinux+xattrs+sha512
+DIR = p+i+n+u+g+acl+selinux+xattrs+sha512
+PERMS = p+u+g+acl+selinux+xattrs+sha512
+LOG = p+u+g+n+S+acl+selinux+xattrs+sha512
+CONTENT = sha512+ftype+acl+xattrs
+CONTENT_EX = sha512+ftype+p+u+g+n+acl+selinux+xattrs
+DATAONLY = p+n+u+g+s+acl+selinux+xattrs+sha512
+/usr/sbin/auditctl p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/auditd p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/ausearch p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/aureport p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/augenrules p+i+n+u+g+s+b+acl+xattrs+sha512
+/usr/sbin/rsyslogd p+i+n+u+g+s+b+acl+xattrs+sha512
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -51557,9 +51643,12 @@ The audit daemon must be restarted for changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001851</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep active /etc/audit/plugins.d/syslog.conf
+# V258145 - Modifying "active" from "no" to "yes" - 2023-12-27
+active=yes
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -55016,9 +55105,12 @@ The audit daemon must be restarted for the changes to take effect.</ATTRIBUTE_DA
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000154</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># grep freq /etc/audit/auditd.conf
+# V258168 - Modifying "freq" from "50" to "100" - 2023-12-27
+freq=100
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -65388,9 +65480,24 @@ The system must be rebooted to make the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-003123</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS></COMMENTS>
+				<COMMENTS># ls -l /etc/crypto-policies/back-ends/
+total 0
+lrwxrwxrwx. 1 root root 40 Dec 27 03:38 bind.config -&gt; /usr/share/crypto-policies/FIPS/bind.txt
+lrwxrwxrwx. 1 root root 42 Dec 27 03:38 gnutls.config -&gt; /usr/share/crypto-policies/FIPS/gnutls.txt
+lrwxrwxrwx. 1 root root 40 Dec 27 03:38 java.config -&gt; /usr/share/crypto-policies/FIPS/java.txt
+lrwxrwxrwx. 1 root root 46 Dec 27 03:38 javasystem.config -&gt; /usr/share/crypto-policies/FIPS/javasystem.txt
+lrwxrwxrwx. 1 root root 40 Dec 27 03:38 krb5.config -&gt; /usr/share/crypto-policies/FIPS/krb5.txt
+lrwxrwxrwx. 1 root root 45 Dec 27 03:38 libreswan.config -&gt; /usr/share/crypto-policies/FIPS/libreswan.txt
+lrwxrwxrwx. 1 root root 42 Dec 27 03:38 libssh.config -&gt; /usr/share/crypto-policies/FIPS/libssh.txt
+lrwxrwxrwx. 1 root root 39 Dec 27 03:38 nss.config -&gt; /usr/share/crypto-policies/FIPS/nss.txt
+lrwxrwxrwx. 1 root root 43 Dec 27 03:38 openssh.config -&gt; /usr/share/crypto-policies/FIPS/openssh.txt
+lrwxrwxrwx. 1 root root 49 Dec 27 03:38 opensshserver.config -&gt; /usr/share/crypto-policies/FIPS/opensshserver.txt
+lrwxrwxrwx. 1 root root 46 Dec 27 03:38 opensslcnf.config -&gt; /usr/share/crypto-policies/FIPS/opensslcnf.txt
+lrwxrwxrwx. 1 root root 43 Dec 27 03:38 openssl.config -&gt; /usr/share/crypto-policies/FIPS/openssl.txt
+lrwxrwxrwx. 1 root root 48 Dec 27 03:38 openssl_fips.config -&gt; /usr/share/crypto-policies/FIPS/openssl_fips.txt
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
