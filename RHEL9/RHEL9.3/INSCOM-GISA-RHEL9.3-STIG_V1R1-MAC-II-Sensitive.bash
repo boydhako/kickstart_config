@@ -3,6 +3,30 @@ date="$(date +%F)"
 nmcfg="/etc/NetworkManager/NetworkManager.conf"
 sshdcfg="/etc/ssh/sshd_config"
 
+function SYSCTLCFG {
+	rule="$1"
+	setting="$2"
+	value="$3"
+
+	runningvalue="$(sysctl $setting | tr -d [:blank:] | awk -F= '{print $2}')"
+	setvalue="$(/usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F $setting | tail -n 1 | tr -d [:blank:] | awk -F= '{print $2}')"
+
+	if [ -z "$runningvalue" -o -z "$setvalue" ]; then
+		printf "%s=%s\n" "$setting" "$value" > /etc/sysctl.d/99-$rule.conf
+		sysctl --system > /dev/null
+	else
+		for cfgvalue in $runningvalue $setvalue; do
+			if [ "$cfgvalue" != "$value" ]; then
+				for file in $(grep -e "^$setting" /etc/sysctl.conf /etc/sysctl.d/* | awk -F: '{print $1}' | sort | uniq); do
+					str="$(egrep -e "^$setting" $file)"
+					sed -i "s#^$str#$setting=$value#g" $file
+					sysctl --system > /dev/null
+				done
+			fi
+		done
+	fi
+}
+
 function MODPROBECFG {
 	module="$1"
 	install="$2"
@@ -53,6 +77,29 @@ function SSHDCFG {
 				sed -i "s/^$str.*/# Modifying $setting to \"$value1 $value2\" - $date\n$setting $value1 $value2/g" $sshdcfg
 				systemctl restart sshd.service
 			fi
+		fi
+	fi
+}
+
+function SSHCRYPTO {
+	cryptodir="/etc/crypto-policies/back-ends"
+	rule="$1"
+	file="$cryptodir/$2"
+	setting="$3"
+	value="$4"
+
+	V258236
+
+	if [ -f "$file" ]; then
+		if [ "$(grep -e "^$setting " $file | wc -l)" -ge "1" ]; then
+			currentvalue="$(grep -e "^$setting " $file | sed "s#^$setting #$setting:#g" | tr -d [:blank:] | awk -F: '{print $2}')"
+			if [ "$value" != "$currentvalue" ]; then
+				str="$(egrep -e "^$setting " $file)"
+				sed -i "s#^$str#$setting $value#g" $file
+				systemctl restart sshd.service
+			fi
+		else
+			printf "%s %s\n" "$setting" "$value" >> $file
 		fi
 	fi
 }
@@ -207,8 +254,68 @@ function V257937 {
 	fi
 }
 
+function V257960 {
+	SYSCTLCFG $FUNCNAME net.ipv4.conf.all.log_martians 1
+}
+
+function V257961 {
+	SYSCTLCFG $FUNCNAME net.ipv4.conf.default.log_martians 1
+}
+
+function V257967 {
+	SYSCTLCFG $FUNCNAME net.ipv4.icmp_ignore_bogus_error_responses 1
+}
+
+function V257970 {
+	SYSCTLCFG $FUNCNAME net.ipv4.conf.all.forwarding 0
+}
+
+function V257989 {
+	SSHCRYPTO $FUNCNAME openssh.config Ciphers aes-256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+}
+
+function V257990 {
+	SSHCRYPTO $FUNCNAME openssh.config MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256
+}
+
+function V258236 {
+	cryptobackend="/etc/crypto-policies/back-ends"
+	for file in $(find $cryptobackend -type f); do
+		name="$(basename --suffix .config $file)"
+		if [ "$(find /usr/share/crypto-policies/FIPS -name "$name.txt" | wc -l)" -ge "1" ]; then
+			cfgtxt="$(find /usr/share/crypto-policies/FIPS -name "$name.txt" | head -n 1)"
+			mv $file /root/$name-crypto-back-end-$date.bck
+			ln -s $cfgtxt $cryptobackend/$name.config
+		fi
+	done
+	for link in $(find $cryptobackend -type l); do
+		file="$(file $link | awk '{print $NF}')"
+		if [ "$(dirname $file)" != "/usr/share/crypto-policies/FIPS" ]; then
+			name="$(basename --suffix .txt $file)"
+			cfg="$(find /usr/share/crypto-policies/FIPS -name "$name.txt")"
+			unlink $link
+			ln -s $cfg $cryptobackend/$name.config
+		fi
+	done
+
+	for file in $(find /usr/share/crypto-policies/FIPS -type f); do
+		name="$(basename --suffix .txt $file)"
+		cfg="$cryptobackend/$name.config"
+		if [ ! -f "$cfg" ]; then
+			ln -s $file $cfg
+		fi
+	done
+}
+
 function STIGIMPLEMENT {
-	V257937
+	V257990
+	V257989
+	V258236
+	#V257970
+	#V257967
+	#V257961
+	#V257960
+	#V257937
 	#V257779
 	#V257782
 	#V257949
