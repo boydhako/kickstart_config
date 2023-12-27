@@ -480,28 +480,31 @@ function PAMDCFG {
 	elif [ "$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$3 == lib {print $0}' $cfg | wc -l)" -lt "1" ]; then
 		str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type {print $0}' $cfg | head -n 1)"
 		sed -i "s#^$str#$type\t$ctrl\t$lib\t$optvalue\n$str#" $cfg
-	elif [ "$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$optvalue" | wc -l)" -lt "1" ]; then
-		str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | head -n 1)"
-		sed -i "s#^$str#$str $optvalue#" $cfg
-	elif [ "$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$optvalue" | wc -l)" -ge "1" ]; then
-		if [ "$(echo $optvalue | grep -e "=" | wc -l)" -ge "1" ]; then
-			for currentvalue in $(cat $cfg | sed 's/ /\n/g' | grep -e "$opt" | awk -F= '{print $2}'); do
-				if [ "$currentvalue" != "$value" ]; then
-					str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$opt=$currentvalue")"
-					newstr="$(echo $str | sed "s#$setting=$currentvalue#$setting=$value#g")"
-					sed "s#^$str#$newstr#" $cfg
-				fi
-			done
+	elif [ "$(echo $optvalue | grep -e "=" | wc -l)" -ge "1" ]; then
+		if [ -z "$(cat $cfg | sed 's/ /\n/g' | awk -v opt="$opt" -F= '$1 == opt {print $2}')" ]; then
+			echo blah
 		fi
+		for currentvalue in $(cat $cfg | sed 's/ /\n/g' | awk -v opt="$opt" -F= '$1 == opt {print $2}'); do
+			if [ "$currentvalue" != "$value" ]; then
+				str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$opt=" | head -n 1)"
+				newstr="$(echo $str | sed "s# $opt=$currentvalue# $opt=$value#")"
+				sed -i "s#^$str#$newstr#g" $cfg
+			fi
+		done
 	fi
 }
 
 function V258091 {
-	PAMDCFG $FUNCNAME system-auth password required pam_pwquality.so retry 4
+	PAMDCFG $FUNCNAME system-auth password required pam_pwquality.so retry 3
+}
+
+function V258092 {
+	PAMDCFG $FUNCNAME password-auth password required pam_pwhistory.so remember 5
 }
 
 function STIGIMPLEMENT {
-	V258091
+	V258092
+	#V258091
 	#V258168
 	#V258145
 	#V258136
