@@ -5,6 +5,43 @@ sshdcfg="/etc/ssh/sshd_config"
 fipscryptodir="/usr/share/crypto-policies/FIPS"
 cryptodir="/etc/crypto-policies/back-ends"
 
+function PAMDCFG {
+	cfgdir="/etc/pam.d"
+	rule="$1"
+	cfg="$cfgdir/$2"
+	type="$3"
+	ctrl="$4"
+	lib="$5"
+	opt="$6"
+	value="$7"
+	optvalue="$opt=$value"
+
+	if [ -z "$value" ]; then
+		optvalue="$opt"
+	fi
+
+	if [ ! -f "$cfg" ]; then
+		printf "# %s - Creating %s with \"%s %s %s\" - %s\n%s\t%s\t%s\n" "$rule" "$cfg" "$type" "$ctrl" "$optvalue" "$date" "$type" "$ctrl" "$optvalue" > $cfg
+	elif [ "$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$3 == lib {print $0}' $cfg | wc -l)" -lt "1" ]; then
+		str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type {print $0}' $cfg | head -n 1)"
+		sed -i "s#^$str#$type\t$ctrl\t$lib\t$optvalue\n$str#" $cfg
+	elif [ "$(echo $optvalue | grep -e "=" | wc -l)" -ge "1" ]; then
+
+		if [ "$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$opt" | wc -l)" -lt "1" ]; then
+			str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg)"
+			sed -i "s#^$str#$str $optvalue#" $cfg
+		fi
+
+		for currentvalue in $(cat $cfg | sed 's/ /\n/g' | awk -v opt="$opt" -F= '$1 == opt {print $2}'); do
+			if [ "$currentvalue" != "$value" ]; then
+				str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$opt=$currentvalue" | head -n 1)"
+				newstr="$(echo $str | sed "s# $opt=$currentvalue# $opt=$value#")"
+				sed -i "s#^$str#$newstr#g" $cfg
+			fi
+		done
+	fi
+}
+
 function AUDITCFG {
 	cfgdir="/etc/audit"
 	rule="$1"
@@ -458,44 +495,6 @@ function V258145 {
 
 function V258168 {
 	AUDITCFG $FUNCNAME auditd.conf freq 100
-}
-
-function PAMDCFG {
-	cfgdir="/etc/pam.d"
-	rule="$1"
-	cfg="$cfgdir/$2"
-	type="$3"
-	ctrl="$4"
-	lib="$5"
-	opt="$6"
-	value="$7"
-	optvalue="$opt=$value"
-
-	if [ -z "$value" ]; then
-		optvalue="$opt"
-	fi
-
-	if [ ! -f "$cfg" ]; then
-		printf "# %s - Creating %s with \"%s %s %s\" - %s\n%s\t%s\t%s\n" "$rule" "$cfg" "$type" "$ctrl" "$optvalue" "$date" "$type" "$ctrl" "$optvalue" > $cfg
-	elif [ "$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$3 == lib {print $0}' $cfg | wc -l)" -lt "1" ]; then
-		str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type {print $0}' $cfg | head -n 1)"
-		sed -i "s#^$str#$type\t$ctrl\t$lib\t$optvalue\n$str#" $cfg
-	elif [ "$(echo $optvalue | grep -e "=" | wc -l)" -ge "1" ]; then
-
-		if [ "$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$opt" | wc -l)" -lt "1" ]; then
-			str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg)"
-			sed -i "s#^$str#$str $optvalue#" $cfg
-		fi
-
-
-		for currentvalue in $(cat $cfg | sed 's/ /\n/g' | awk -v opt="$opt" -F= '$1 == opt {print $2}'); do
-			if [ "$currentvalue" != "$value" ]; then
-				str="$(awk -v type="$type" -v ctrl="$ctrl" -v lib="$lib" '$1 == type && $3 == lib {print $0}' $cfg | grep -e "$opt=$currentvalue" | head -n 1)"
-				newstr="$(echo $str | sed "s# $opt=$currentvalue# $opt=$value#")"
-				sed -i "s#^$str#$newstr#g" $cfg
-			fi
-		done
-	fi
 }
 
 function V258091 {
