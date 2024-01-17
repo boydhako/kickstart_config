@@ -29749,9 +29749,7 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 				</STIG_DATA>
 				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS># grep -i macs /etc/crypto-policies/back-ends/openssh.config
-MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256
-#</COMMENTS>
+				<COMMENTS>Conflict with V-257991. Per DISA, V-257991 is to be used.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
@@ -29883,9 +29881,11 @@ A reboot is required for the changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-001453</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
-				<COMMENTS>Confusing conflicting with V-257990</COMMENTS>
+				<COMMENTS># grep -i macs /etc/crypto-policies/back-ends/openssh.config
+MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,umac-128@openssh.com,hmac-sha2-512
+#</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>
