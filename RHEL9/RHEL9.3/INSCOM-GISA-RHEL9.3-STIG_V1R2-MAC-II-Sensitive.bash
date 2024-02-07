@@ -1,4 +1,4 @@
-#!/bin/bash -xv
+#!/bin/bash
 date="$(date +%F)"
 nmcfg="/etc/NetworkManager/NetworkManager.conf"
 sshdcfg="/etc/ssh/sshd_config"
@@ -534,6 +534,21 @@ function V258125 {
 	fi
 }
 
+function V257823 {
+        function GETPKGS {
+                for file in $(rpm -Va --noconfig | awk '$1 ~ /..5/ && $2 != "c"' | awk '{print $NF}'); do
+                        dnf provides $file | egrep -B 1 -e "^Repo" | head -n 1
+                done
+        }
+        for pkg in $(GETPKGS | sort | uniq | awk '{print $1}'); do
+                dnf reinstall -y $pkg
+                if [ "$?" != "0" ]; then
+                        printf "\n\n!!! Unable to do fix action for %s. !!!\n\nMight need to check YUM configuration to reinstall [%s].\n\n" "$FUNCNAME" "$pkg"
+                        read -p "==== PRESS ANY KEY TO CONTINUE ===="
+                fi
+        done
+}
+
 function STIGIMPLEMENT {
 	V258236
 	V258125
@@ -580,6 +595,7 @@ function STIGIMPLEMENT {
 	V257880
 	V258034
 	V258039
+    V257823
 }
 
 STIGIMPLEMENT
